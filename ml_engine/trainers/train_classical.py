@@ -21,6 +21,14 @@ def run_classical_training():
     acc = model.evaluate(X_test, y_test)
     print(f"Classical Model Accuracy: {acc}")
     
+    # Save metrics
+    import json
+    import os
+    from ..config import SAVED_MODELS_DIR
+    metrics_path = os.path.join(SAVED_MODELS_DIR, 'classical_metrics.json')
+    with open(metrics_path, 'w') as f:
+        json.dump({'accuracy': acc}, f)
+    
     print(f"Saving model to {CLASSICAL_MODEL_PATH}...")
     model.save(CLASSICAL_MODEL_PATH)
     print("Done.")

@@ -1,9 +1,13 @@
 import os
 
 # Paths
+# Paths
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(BASE_DIR, 'data')
-SAVED_MODELS_DIR = os.path.join(BASE_DIR, 'saved_models')
+ML_ENGINE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Data and Models are now inside ml_engine
+DATA_DIR = os.path.join(ML_ENGINE_DIR, 'data')
+SAVED_MODELS_DIR = os.path.join(ML_ENGINE_DIR, 'saved_models')
 
 DATA_FILE_PATH = os.path.join(DATA_DIR, 'creditcard.csv')
 CLASSICAL_MODEL_PATH = os.path.join(SAVED_MODELS_DIR, 'classical_xgboost.pkl')

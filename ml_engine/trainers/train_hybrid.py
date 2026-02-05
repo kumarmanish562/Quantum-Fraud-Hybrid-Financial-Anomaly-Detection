@@ -54,6 +54,14 @@ def run_hybrid_training():
     acc = correct / total
     print(f"Hybrid Model Accuracy: {acc}")
     
+    # Save metrics
+    import json
+    import os
+    from ..config import SAVED_MODELS_DIR
+    metrics_path = os.path.join(SAVED_MODELS_DIR, 'hybrid_metrics.json')
+    with open(metrics_path, 'w') as f:
+        json.dump({'accuracy': acc}, f)
+    
     print(f"Saving model to {QUANTUM_MODEL_PATH}...")
     torch.save(model.state_dict(), QUANTUM_MODEL_PATH)
     print("Done.")

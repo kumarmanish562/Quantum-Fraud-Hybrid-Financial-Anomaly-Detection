@@ -2,8 +2,10 @@ import argparse
 import sys
 import os
 
-# Ensure the script can see ml_engine if running from different pwd
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# Ensure the script can see root directory to import ml_engine as package
+# Current file is in ml_engine/main.py, so root is two levels up? No, one level up.
+# ml_engine/main.py -> dirname is ml_engine -> dirname is root.
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from ml_engine.trainers.train_classical import run_classical_training
 from ml_engine.trainers.train_hybrid import run_hybrid_training
