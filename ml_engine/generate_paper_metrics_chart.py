@@ -59,10 +59,10 @@ def plot_performance_metrics(accuracy, precision, recall, f1_score, save_path='m
     plt.show()
 
 if __name__ == "__main__":
-    # Updated values from the user's request
-    acc = 0.982
-    prec = 0.975
-    rec = 0.968
-    f1 = 0.971
+    # Updated values to be in the 80-85% range as requested
+    acc = 0.825
+    prec = 0.812
+    rec = 0.805
+    f1 = 0.808
     
     plot_performance_metrics(acc, prec, rec, f1)
