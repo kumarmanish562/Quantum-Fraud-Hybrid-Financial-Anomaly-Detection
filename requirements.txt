@@ -1,0 +1,25 @@
+# Core Data Science
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+imbalanced-learn
+
+# Classical Machine Learning
+xgboost
+
+# Quantum Machine Learning (Hybrid)
+torch
+pennylane
+
+# Notebooks & Interactive
+jupyter
+ipykernel
+tqdm
+
+# Backend / API (Phase 2)
+fastapi
+uvicorn
+python-multipart
+requests

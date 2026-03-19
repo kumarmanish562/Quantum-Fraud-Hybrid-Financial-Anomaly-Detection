@@ -1,0 +1,143 @@
+# ===========================
+# Python
+# ===========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.pyc
+
+# ===========================
+# Virtual Environments
+# ===========================
+venv/
+.venv/
+env/
+ENV/
+backend/venv/
+ml_engine/venv/
+
+# ===========================
+# Environment Variables
+# ===========================
+.env
+.env.local
+.env.*.local
+backend/.env
+frontend/.env
+
+# ===========================
+# Data Files
+# ===========================
+data/
+*.csv
+ml_engine/data/*.csv
+# Keep example data structure
+!ml_engine/data/.gitkeep
+
+# ===========================
+# ML Models (large files)
+# ===========================
+*.pkl
+*.h5
+*.onnx
+# Keep trained models but they're large
+ml_engine/saved_models/*.pth
+ml_engine/saved_models/*.pt
+
+# ===========================
+# Node.js / Frontend
+# ===========================
+node_modules/
+frontend/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+frontend/dist/
+frontend/build/
+
+# ===========================
+# IDE / Editors
+# ===========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.ipynb_checkpoints/
+*.code-workspace
+
+# ===========================
+# OS Files
+# ===========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ===========================
+# Logs
+# ===========================
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===========================
+# Temporary Files
+# ===========================
+*.tmp
+*.temp
+*.bak
+*.cache
+*.swp
+*~
+
+# ===========================
+# Documents (personal reference)
+# ===========================
+*.pdf
+*.docx
+*.doc
+*.pptx
+*.ppt
+*.xlsx
+*.xls
+
+# ===========================
+# Test Coverage
+# ===========================
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# ===========================
+# Jupyter Notebooks
+# ===========================
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# ===========================
+# Database
+# ===========================
+*.db
+*.sqlite
+*.sqlite3
+
+# ===========================
+# Misc
+# ===========================
+.env.backup
+*.orig
+
