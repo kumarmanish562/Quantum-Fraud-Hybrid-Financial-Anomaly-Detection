@@ -6,6 +6,7 @@ const TopNavbar = ({ title = "Dashboard", notificationCount = 0, userName = "Adm
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [isLoadingNotifications, setIsLoadingNotifications] = useState(false);
+  const [isSimulating, setIsSimulating] = useState(false);
   const profileRef = useRef(null);
   const notificationRef = useRef(null);
 
@@ -91,6 +92,184 @@ const TopNavbar = ({ title = "Dashboard", notificationCount = 0, userName = "Adm
     }
   };
 
+  // Simulate Transaction
+  const simulateTransaction = async () => {
+    if (isSimulating) return;
+    
+    setIsSimulating(true);
+    
+    try {
+      const merchants = [
+        { name: "Flipkart", category: "online" },
+        { name: "Amazon India", category: "online" },
+        { name: "Swiggy", category: "food_delivery" },
+        { name: "Zomato", category: "food_delivery" },
+        { name: "Big Bazaar", category: "grocery" },
+        { name: "Reliance Digital", category: "retail" },
+        { name: "PVR Cinemas", category: "entertainment" },
+        { name: "Tanishq Jewellers", category: "jewelry" },
+        { name: "Cafe Coffee Day", category: "restaurant" },
+        { name: "BookMyShow", category: "entertainment" }
+      ];
+      
+      const locations = ["Mumbai", "Delhi", "Bangalore", "Hyderabad", "Chennai", "Pune", "Kolkata"];
+      
+      // Random merchant and location
+      const merchant = merchants[Math.floor(Math.random() * merchants.length)];
+      const location = locations[Math.floor(Math.random() * locations.length)];
+      
+      // Generate amount with realistic distribution
+      const rand = Math.random();
+      let amount;
+      let isFraudIntent = false;
+      
+      if (rand < 0.50) {
+        // 50% normal transactions (₹100-5000)
+        amount = Math.round((Math.random() * 4900 + 100) * 100) / 100;
+        isFraudIntent = false;
+      } else if (rand < 0.70) {
+        // 20% medium transactions (₹5000-25000)
+        amount = Math.round((Math.random() * 20000 + 5000) * 100) / 100;
+        isFraudIntent = false;
+      } else if (rand < 0.85) {
+        // 15% high-value suspicious (₹25000-100000) - FRAUD
+        amount = Math.round((Math.random() * 75000 + 25000) * 100) / 100;
+        isFraudIntent = true;
+      } else {
+        // 15% very high-value fraud (₹100000-500000) - FRAUD
+        amount = Math.round((Math.random() * 400000 + 100000) * 100) / 100;
+        isFraudIntent = true;
+      }
+      
+      const userId = `user_${Math.floor(Math.random() * 100) + 1}`;
+      const description = `Purchase at ${merchant.name}, ${location}`;
+      
+      // Create transaction
+      const transactionData = {
+        user_id: userId,
+        amount: amount,
+        merchant_name: merchant.name,
+        merchant_category: merchant.category,
+        location: location,
+        description: description
+      };
+      
+      const response = await fetch('http://localhost:8000/api/v1/transactions/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(transactionData)
+      });
+      
+      if (!response.ok) throw new Error('Failed to create transaction');
+      
+      const transaction = await response.json();
+      
+      // Generate features for fraud detection
+      const currentHour = new Date().getHours();
+      const features = generateFeatures(amount, currentHour, isFraudIntent);
+      
+      // Run fraud prediction
+      const fraudData = {
+        transaction_id: transaction.id,
+        time: new Date().toISOString(),
+        ...features,
+        amount: amount
+      };
+      
+      const fraudResponse = await fetch('http://localhost:8000/api/v1/fraud/predict', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(fraudData)
+      });
+      
+      if (fraudResponse.ok) {
+        const fraudResult = await fraudResponse.json();
+        
+        // Update transaction with fraud status
+        await fetch(`http://localhost:8000/api/v1/transactions/${transaction.id}/fraud-status?is_fraud=${fraudResult.is_fraud}&fraud_probability=${fraudResult.fraud_probability}&risk_score=${fraudResult.fraud_probability}`, {
+          method: 'PATCH'
+        });
+        
+        // Show notification
+        const statusIcon = fraudResult.is_fraud ? '🚨' : '✅';
+        const statusText = fraudResult.is_fraud ? 'FRAUD DETECTED' : 'Safe Transaction';
+        const statusColor = fraudResult.is_fraud ? 'bg-red-500' : 'bg-green-500';
+        
+        // Create toast notification
+        showToast(
+          `${statusIcon} ${statusText}`,
+          `₹${amount.toLocaleString()} at ${merchant.name} - ${(fraudResult.fraud_probability * 100).toFixed(0)}% risk`,
+          statusColor
+        );
+        
+        // Refresh page data after a short delay
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      }
+      
+    } catch (error) {
+      console.error('Simulation failed:', error);
+      showToast('❌ Simulation Failed', 'Could not create transaction', 'bg-red-500');
+    } finally {
+      setIsSimulating(false);
+    }
+  };
+  
+  // Generate features for ML model
+  const generateFeatures = (amount, timeHour, isFraudIntent) => {
+    const features = {};
+    
+    for (let i = 1; i <= 28; i++) {
+      // Start with normal distribution
+      let baseValue = (Math.random() - 0.5) * 2 * 1.5; // Gaussian-like
+      
+      if (isFraudIntent) {
+        // Strong fraud indicators - make features significantly different
+        if (amount > 100000) {
+          baseValue += Math.random() * 3 + 2.5; // Very strong signal
+        } else if (amount > 50000) {
+          baseValue += Math.random() * 2 + 1.5; // Strong signal
+        } else if (amount > 25000) {
+          baseValue += Math.random() * 1.5 + 1.0; // Medium signal
+        }
+        
+        // Late night adds more suspicion
+        if (timeHour < 5 || timeHour > 23) {
+          baseValue += Math.random() * 1.5 + 0.5;
+        }
+        
+        // Add some random spikes in certain features
+        if (i % 3 === 0) {
+          baseValue += Math.random() * 2;
+        }
+      } else {
+        // Normal transaction - keep features close to zero
+        baseValue = baseValue * 0.3; // Reduce variance
+      }
+      
+      features[`v${i}`] = parseFloat(baseValue.toFixed(6));
+    }
+    
+    return features;
+  };
+  
+  // Toast notification helper
+  const showToast = (title, message, bgColor) => {
+    const toast = document.createElement('div');
+    toast.className = `fixed top-20 right-6 ${bgColor} text-white px-6 py-4 rounded-xl shadow-2xl z-50 animate-slide-in-right max-w-md`;
+    toast.innerHTML = `
+      <div class="font-bold text-lg mb-1">${title}</div>
+      <div class="text-sm opacity-90">${message}</div>
+    `;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+      toast.style.animation = 'slide-out-right 0.3s ease-out';
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
+  };
+
   return (
     <header className="bg-[#111827]/80 backdrop-blur-sm border-b border-gray-800/50 px-6 py-4 sticky top-0 z-40">
       <div className="flex items-center justify-between">
@@ -105,6 +284,31 @@ const TopNavbar = ({ title = "Dashboard", notificationCount = 0, userName = "Adm
         
         {/* Right Section */}
         <div className="flex items-center space-x-6">
+          {/* Simulate Transaction Button */}
+          <button
+            onClick={simulateTransaction}
+            disabled={isSimulating}
+            className={`flex items-center space-x-2 px-4 py-2 rounded-xl font-medium transition-all duration-200 ${
+              isSimulating 
+                ? 'bg-gray-700 text-gray-400 cursor-not-allowed' 
+                : 'bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white shadow-lg hover:shadow-xl'
+            }`}
+          >
+            {isSimulating ? (
+              <>
+                <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
+                <span className="text-sm">Simulating...</span>
+              </>
+            ) : (
+              <>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span className="text-sm">Simulate Transaction</span>
+              </>
+            )}
+          </button>
+          
           {/* Search Bar */}
           <div className="relative hidden md:block">
             <input

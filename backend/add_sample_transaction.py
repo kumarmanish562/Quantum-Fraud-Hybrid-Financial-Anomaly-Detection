@@ -8,21 +8,35 @@ from datetime import datetime, timedelta
 
 API_URL = "http://localhost:8000/api/v1"
 
-# Sample merchant data
+# Sample merchant data (Indian merchants)
 MERCHANTS = [
-    {"name": "Supermarket", "category": "grocery"},
-    {"name": "North Star Logistics", "category": "retail"},
-    {"name": "Online Store", "category": "online"},
-    {"name": "Velvet Lounge Paris", "category": "restaurant"},
-    {"name": "Tech Store Online", "category": "online"},
-    {"name": "Gas Station 24/7", "category": "gas"},
-    {"name": "Coffee Shop", "category": "restaurant"},
-    {"name": "Fashion Retail", "category": "retail"},
-    {"name": "Electronics Hub", "category": "retail"},
-    {"name": "CryptoX Direct", "category": "online"},
+    {"name": "Big Bazaar", "category": "grocery"},
+    {"name": "Reliance Digital", "category": "retail"},
+    {"name": "Flipkart", "category": "online"},
+    {"name": "Barbeque Nation", "category": "restaurant"},
+    {"name": "Amazon India", "category": "online"},
+    {"name": "Indian Oil Petrol Pump", "category": "gas"},
+    {"name": "Cafe Coffee Day", "category": "restaurant"},
+    {"name": "Westside Fashion", "category": "retail"},
+    {"name": "Croma Electronics", "category": "retail"},
+    {"name": "Myntra", "category": "online"},
+    {"name": "DMart", "category": "grocery"},
+    {"name": "Swiggy", "category": "food_delivery"},
+    {"name": "Zomato", "category": "food_delivery"},
+    {"name": "BookMyShow", "category": "entertainment"},
+    {"name": "PVR Cinemas", "category": "entertainment"},
+    {"name": "Tanishq Jewellers", "category": "jewelry"},
+    {"name": "Apollo Pharmacy", "category": "pharmacy"},
+    {"name": "Decathlon Sports", "category": "sports"},
+    {"name": "Haldiram's", "category": "restaurant"},
+    {"name": "Paytm Mall", "category": "online"},
 ]
 
-LOCATIONS = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Miami", "Seattle"]
+LOCATIONS = [
+    "Mumbai", "Delhi", "Bangalore", "Hyderabad", "Chennai", 
+    "Kolkata", "Pune", "Ahmedabad", "Jaipur", "Lucknow",
+    "Chandigarh", "Indore", "Kochi", "Surat", "Nagpur"
+]
 
 def create_transaction(user_id, amount, merchant_name, merchant_category, location, description):
     """Create a transaction via API"""
@@ -65,16 +79,20 @@ def generate_sample_transactions(count=20):
     for i in range(count):
         # Random transaction data
         merchant = random.choice(MERCHANTS)
-        # Use rupee amounts (multiply by 80 for INR conversion)
-        amount = round(random.uniform(400, 400000), 2)
+        # Indian rupee amounts - realistic ranges
+        amount = round(random.uniform(50, 15000), 2)
         
         # Make some transactions suspicious (high amounts)
         if random.random() < 0.1:  # 10% chance of suspicious transaction
-            amount = round(random.uniform(400000, 1200000), 2)
+            amount = round(random.uniform(50000, 500000), 2)
         
-        user_id = f"user_{random.randint(1, 50)}"
+        # Some very small transactions (also suspicious)
+        if random.random() < 0.05:  # 5% chance of micro transaction
+            amount = round(random.uniform(1, 10), 2)
+        
+        user_id = f"user_{random.randint(1, 100)}"
         location = random.choice(LOCATIONS)
-        description = f"Purchase at {merchant['name']}"
+        description = f"Purchase at {merchant['name']}, {location}"
         
         # Create transaction
         transaction = create_transaction(
@@ -100,6 +118,7 @@ def generate_sample_transactions(count=20):
     print(f"\n✅ Finished generating {count} transactions!")
     print(f"📊 Check your dashboard at http://localhost:5173")
     print(f"💰 All amounts are in Indian Rupees (₹)")
+    print(f"🇮🇳 Locations: {', '.join(LOCATIONS[:5])} and more...")
 
 if __name__ == "__main__":
     import sys

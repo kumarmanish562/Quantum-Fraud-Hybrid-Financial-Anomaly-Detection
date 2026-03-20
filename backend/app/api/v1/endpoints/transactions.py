@@ -18,6 +18,31 @@ async def create_transaction(transaction: TransactionCreate):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to create transaction: {str(e)}")
 
+@router.patch("/{transaction_id}/fraud-status")
+async def update_transaction_fraud_status(
+    transaction_id: str,
+    is_fraud: bool,
+    fraud_probability: float,
+    risk_score: Optional[float] = None
+):
+    """
+    Update transaction with fraud detection results
+    """
+    try:
+        transaction = await transaction_service.update_transaction_fraud_status(
+            transaction_id=transaction_id,
+            is_fraud=is_fraud,
+            fraud_probability=fraud_probability,
+            risk_score=risk_score
+        )
+        if not transaction:
+            raise HTTPException(status_code=404, detail="Transaction not found")
+        return transaction
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to update transaction: {str(e)}")
+
 @router.get("/", response_model=List[Transaction])
 async def get_transactions(
     skip: int = Query(0, ge=0),

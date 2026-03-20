@@ -18,10 +18,10 @@ const Transactions = () => {
     try {
       setLoading(true);
       
-      // Build query parameters
+      // Fetch more transactions to enable proper pagination
       const params = {
-        skip: (currentPage - 1) * itemsPerPage,
-        limit: itemsPerPage
+        skip: 0,
+        limit: 1000 // Fetch more to enable client-side pagination
       };
       
       // Add status filter
@@ -36,14 +36,14 @@ const Transactions = () => {
       
       const data = await transactionsAPI.getAll(params);
       setTransactions(data);
-      setTotalCount(data.length); // In production, backend should return total count
+      setTotalCount(data.length);
     } catch (error) {
       console.error('Failed to fetch transactions:', error);
       setTransactions([]);
     } finally {
       setLoading(false);
     }
-  }, [currentPage, statusFilter]);
+  }, [statusFilter]);
 
   // Initial fetch and auto-refresh
   useEffect(() => {
@@ -136,7 +136,15 @@ const Transactions = () => {
   // Pagination
   const totalPages = Math.ceil(filteredTransactions.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedTransactions = filteredTransactions.slice(startIndex, startIndex + itemsPerPage);
+  const endIndex = Math.min(startIndex + itemsPerPage, filteredTransactions.length);
+  const paginatedTransactions = filteredTransactions.slice(startIndex, endIndex);
+
+  // Reset to page 1 if current page exceeds total pages
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(1);
+    }
+  }, [currentPage, totalPages]);
 
   // Loading state
   if (loading && transactions.length === 0) {
@@ -332,22 +340,33 @@ const Transactions = () => {
         {/* Pagination */}
         <div className="flex items-center justify-between p-6 border-t border-gray-800/50">
           <div className="text-gray-400 text-sm">
-            Showing {startIndex + 1}-{Math.min(startIndex + itemsPerPage, filteredTransactions.length)} of {filteredTransactions.length.toLocaleString()}
+            Showing {filteredTransactions.length > 0 ? startIndex + 1 : 0}-{endIndex} of {filteredTransactions.length.toLocaleString()}
           </div>
           
           <div className="flex items-center space-x-2">
             <button
-              onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-              disabled={currentPage === 1}
-              className="p-2 text-gray-400 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+              onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+              disabled={currentPage === 1 || totalPages === 0}
+              className="p-2 text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-200"
+              title="Previous page"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             
-            {[...Array(Math.min(5, totalPages))].map((_, i) => {
-              const pageNum = i + 1;
+            {totalPages > 0 && [...Array(Math.min(5, totalPages))].map((_, i) => {
+              let pageNum;
+              if (totalPages <= 5) {
+                pageNum = i + 1;
+              } else if (currentPage <= 3) {
+                pageNum = i + 1;
+              } else if (currentPage >= totalPages - 2) {
+                pageNum = totalPages - 4 + i;
+              } else {
+                pageNum = currentPage - 2 + i;
+              }
+              
               return (
                 <button
                   key={pageNum}
@@ -363,7 +382,7 @@ const Transactions = () => {
               );
             })}
             
-            {totalPages > 5 && (
+            {totalPages > 5 && currentPage < totalPages - 2 && (
               <>
                 <span className="text-gray-400">...</span>
                 <button
@@ -376,9 +395,10 @@ const Transactions = () => {
             )}
             
             <button
-              onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-              disabled={currentPage === totalPages}
-              className="p-2 text-gray-400 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+              onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+              disabled={currentPage === totalPages || totalPages === 0}
+              className="p-2 text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-200"
+              title="Next page"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

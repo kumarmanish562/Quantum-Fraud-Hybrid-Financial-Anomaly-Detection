@@ -4,11 +4,13 @@ import uuid
 
 from app.schemas.transaction import Transaction, TransactionCreate, TransactionFilter
 
+# Shared in-memory storage (singleton pattern for demo)
+_TRANSACTION_STORAGE: Dict[str, Transaction] = {}
+
 class TransactionService:
     def __init__(self):
-        # In-memory storage for demo (replace with database in production)
-        self.transactions: Dict[str, Transaction] = {}
-        # Start with empty database - transactions will be added via API calls
+        # Use shared storage so all instances see the same data
+        self.transactions = _TRANSACTION_STORAGE
     
     async def create_transaction(self, transaction_data: TransactionCreate) -> Transaction:
         """Create a new transaction"""
@@ -22,10 +24,29 @@ class TransactionService:
             merchant_category=transaction_data.merchant_category,
             merchant_name=transaction_data.merchant_name,
             location=transaction_data.location,
-            description=transaction_data.description
+            description=transaction_data.description,
+            is_fraud=None,  # Will be set by fraud detection
+            fraud_probability=None,
+            risk_score=None
         )
         
         self.transactions[transaction_id] = transaction
+        return transaction
+    
+    async def update_transaction_fraud_status(
+        self, 
+        transaction_id: str, 
+        is_fraud: bool, 
+        fraud_probability: float,
+        risk_score: float = None
+    ) -> Optional[Transaction]:
+        """Update transaction with fraud detection results"""
+        transaction = self.transactions.get(transaction_id)
+        if transaction:
+            transaction.is_fraud = is_fraud
+            transaction.fraud_probability = fraud_probability
+            transaction.risk_score = risk_score or fraud_probability
+            self.transactions[transaction_id] = transaction
         return transaction
     
     async def get_transaction_by_id(self, transaction_id: str) -> Optional[Transaction]:

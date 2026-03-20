@@ -26,11 +26,15 @@ class AnalyticsService:
             "fraud_detected_today": fraud_today,
             "fraud_rate_today": fraud_rate_today,
             "total_amount_processed": stats.get("total_amount", 0),
-            "avg_response_time": round(sum(t.fraud_probability * 100 for t in today_txns) / len(today_txns), 1) if today_txns else 0,
-            "model_accuracy": round(stats.get("fraud_rate", 0) / 100, 3),
+            "avg_response_time": round(sum((t.fraud_probability or 0) * 100 for t in today_txns) / len(today_txns), 1) if today_txns else 0,
+            "model_accuracy": round(stats.get("fraud_rate", 0) / 100, 3) if stats.get("fraud_rate") else 0,
             "active_alerts": fraud_today,
             "system_health": "healthy",
-            "last_updated": datetime.utcnow().isoformat()
+            "last_updated": datetime.utcnow().isoformat(),
+            "transaction_change_percentage": 0.0,
+            "fraud_change_percentage": 0.0,
+            "fraud_rate_change_percentage": 0.0,
+            "safe_transaction_change_percentage": 0.0
         }
     
     async def get_fraud_trends(self, days: int = 30, granularity: str = "daily") -> Dict[str, Any]:
@@ -133,7 +137,7 @@ class AnalyticsService:
         }
         
         for t in transactions:
-            risk = t.risk_score
+            risk = t.risk_score or 0  # Handle None values
             if risk < 0.2:
                 risk_buckets["very_low"] += 1
             elif risk < 0.4:
