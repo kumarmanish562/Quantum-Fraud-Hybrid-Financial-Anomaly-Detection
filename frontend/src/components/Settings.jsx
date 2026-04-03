@@ -236,78 +236,7 @@ const Settings = () => {
         </div>
       </div>
 
-      {/* API Integration Settings */}
-      <div className="bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8">
-        <div className="flex items-start justify-between mb-6">
-          <div>
-            <h2 className="text-xl font-semibold text-white mb-2">API Integration</h2>
-            <p className="text-gray-400 text-sm">Configure API keys and webhook endpoints</p>
-          </div>
-        </div>
-
-        <div className="space-y-6">
-          <div>
-            <label className="block text-gray-300 text-sm font-medium mb-2">API Key</label>
-            <div className="relative">
-              <input
-                type={showApiKey ? "text" : "password"}
-                value={settings.apiKey}
-                onChange={(e) => handleSettingChange('apiKey', e.target.value)}
-                className="w-full bg-gray-700/50 border border-gray-600/50 rounded-xl px-4 py-3 text-white font-mono text-sm focus:outline-none focus:border-blue-500/50 pr-12"
-              />
-              <button
-                onClick={() => setShowApiKey(!showApiKey)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  {showApiKey ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
-                  )}
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-gray-300 text-sm font-medium mb-2">Secret Token</label>
-            <div className="relative">
-              <input
-                type={showSecretToken ? "text" : "password"}
-                value={settings.secretToken}
-                onChange={(e) => handleSettingChange('secretToken', e.target.value)}
-                className="w-full bg-gray-700/50 border border-gray-600/50 rounded-xl px-4 py-3 text-white font-mono text-sm focus:outline-none focus:border-blue-500/50 pr-12"
-              />
-              <button
-                onClick={() => setShowSecretToken(!showSecretToken)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  {showSecretToken ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
-                  )}
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-gray-300 text-sm font-medium mb-2">Webhook URL</label>
-            <input
-              type="url"
-              value={settings.webhookUrl}
-              onChange={(e) => handleSettingChange('webhookUrl', e.target.value)}
-              className="w-full bg-gray-700/50 border border-gray-600/50 rounded-xl px-4 py-3 text-white font-mono text-sm focus:outline-none focus:border-blue-500/50"
-              placeholder="https://api.example.com/webhook"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Additional Settings */}
+      {/* System Preferences */}
       <div className="bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8">
         <div className="flex items-start justify-between mb-6">
           <div>

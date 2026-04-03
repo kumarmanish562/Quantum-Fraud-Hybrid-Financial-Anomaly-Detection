@@ -1,18 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import './index.css'
-import Landing from './pages/Landing'
-import Register from './pages/Register'
-import Login from './pages/Login'
-import VerifyOTP from './pages/VerifyOTP'
-import ForgotPassword from './pages/ForgotPassword'
-import ResetPassword from './pages/ResetPassword'
-import Profile from './pages/Profile'
-import App from './App'
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Landing from './pages/Landing';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import VerifyOTP from './pages/VerifyOTP';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
+import Profile from './pages/Profile';
+import App from './App';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+const AppRouter = () => {
+  return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
@@ -26,5 +24,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
-  </StrictMode>,
-)
+  );
+};
+
+export default AppRouter;

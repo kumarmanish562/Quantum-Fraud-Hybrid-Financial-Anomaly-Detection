@@ -8,9 +8,13 @@ from dotenv import load_dotenv
 from app.api.v1.api import api_router
 from app.core.config import settings
 from app.websocket.manager import ConnectionManager
+from app.core.database import init_db
 
 # Load environment variables
 load_dotenv()
+
+# Initialize database
+init_db()
 
 # Create FastAPI app
 app = FastAPI(
@@ -20,11 +24,11 @@ app = FastAPI(
     openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
 
-# CORS middleware
+# CORS middleware - Allow all origins for development
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.BACKEND_CORS_ORIGINS,
-    allow_credentials=True,
+    allow_origins=["*"],  # Allow all origins
+    allow_credentials=False,  # Set to False when using allow_origins=["*"]
     allow_methods=["*"],
     allow_headers=["*"],
 )
