@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Sidebar = ({ onMenuClick, activeMenu }) => {
+const Sidebar = ({ onMenuClick, activeMenu, isDark, setIsDark }) => {
   const menuItems = [
     {
       name: 'Dashboard',
@@ -70,19 +70,30 @@ const Sidebar = ({ onMenuClick, activeMenu }) => {
   ];
 
   return (
-    <div className="fixed left-0 top-0 h-screen w-64 bg-[#0B0F1A] border-r border-gray-800/50 flex flex-col">
+    <div className={`fixed left-0 top-0 h-screen w-64 border-r flex flex-col ${isDark ? 'bg-gray-50 border-gray-200' : 'bg-white border-gray-200'}`}>
       {/* Header */}
-      <div className="p-6 border-b border-gray-800/50">
-        <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
+      <div className={`p-6 border-b ${isDark ? 'border-gray-200' : 'border-gray-200'}`}>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
+              <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div>
+              <h1 className={`font-semibold text-lg ${isDark ? 'text-gray-900' : 'text-gray-900'}`}>Quantum Fraud</h1>
+              <p className={`text-xs uppercase tracking-wider ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>Operational Hub</p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-white font-semibold text-lg">Quantum Fraud</h1>
-            <p className="text-gray-400 text-xs uppercase tracking-wider">Operational Hub</p>
-          </div>
+          
+          {/* Theme Toggle */}
+          <button
+            onClick={() => setIsDark(!isDark)}
+            className={`p-2 rounded-lg transition ${isDark ? 'text-yellow-400 hover:bg-white' : 'text-gray-700 hover:bg-gray-100'}`}
+            title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          >
+            {isDark ? '☀️' : '🌙'}
+          </button>
         </div>
       </div>
 
@@ -95,12 +106,18 @@ const Sidebar = ({ onMenuClick, activeMenu }) => {
                 onClick={() => onMenuClick(item.name)}
                 className={`w-full flex items-center space-x-3 px-4 py-3 rounded-2xl text-left transition-all duration-200 group ${
                   activeMenu === item.name
-                    ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30'
-                    : 'text-gray-300 hover:bg-gray-800/50 hover:text-white'
+                    ? isDark 
+                      ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30'
+                      : 'bg-blue-50 text-blue-600 border border-blue-200'
+                    : isDark
+                      ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                 }`}
               >
                 <span className={`transition-colors duration-200 ${
-                  activeMenu === item.name ? 'text-blue-400' : 'text-gray-400 group-hover:text-gray-300'
+                  activeMenu === item.name 
+                    ? isDark ? 'text-blue-400' : 'text-blue-600'
+                    : isDark ? 'text-gray-500 group-hover:text-gray-600' : 'text-gray-600 group-hover:text-gray-700'
                 }`}>
                   {item.icon}
                 </span>
@@ -112,11 +129,11 @@ const Sidebar = ({ onMenuClick, activeMenu }) => {
       </nav>
 
       {/* Bottom Section */}
-      <div className="p-4 border-t border-gray-800/50">
+      <div className={`p-4 border-t ${isDark ? 'border-gray-200' : 'border-gray-200'}`}>
         {/* Version Info */}
         <div className="px-4 py-3 text-center">
-          <p className="text-gray-500 text-xs">Version 1.0.0</p>
-          <p className="text-gray-600 text-xs mt-1">© 2024 Quantum Fraud</p>
+          <p className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>Version 1.0.0</p>
+          <p className={`text-xs mt-1 ${isDark ? 'text-gray-600' : 'text-gray-500'}`}>© 2024 Quantum Fraud</p>
         </div>
       </div>
     </div>

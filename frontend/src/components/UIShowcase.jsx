@@ -6,13 +6,13 @@ const UIShowcase = () => {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-white mb-2">UI Components Showcase</h1>
-        <p className="text-gray-400">Demonstration of reusable UI components for the fraud detection system</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">UI Components Showcase</h1>
+        <p className="text-gray-500">Demonstration of reusable UI components for the fraud detection system</p>
       </div>
 
       {/* Model Badges */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-white">AI Model Badges</h2>
+        <h2 className="text-xl font-semibold text-gray-900">AI Model Badges</h2>
         <div className="flex flex-wrap items-center gap-4">
           <ModelBadge modelType="Classical" size="sm" />
           <ModelBadge modelType="Classical" size="md" />
@@ -27,7 +27,7 @@ const UIShowcase = () => {
 
       {/* AI Status Badges */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-white">AI Status Indicators</h2>
+        <h2 className="text-xl font-semibold text-gray-900">AI Status Indicators</h2>
         <div className="flex flex-wrap items-center gap-4">
           <AIStatusBadge status="online" processingTime={847} />
           <AIStatusBadge status="processing" confidence={94} />
@@ -38,23 +38,23 @@ const UIShowcase = () => {
 
       {/* Cards */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-white">Card Components</h2>
+        <h2 className="text-xl font-semibold text-gray-900">Card Components</h2>
         
         {/* Basic Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Card>
-            <h3 className="text-white font-semibold mb-2">Basic Card</h3>
-            <p className="text-gray-400">This is a basic card with glassmorphism effect, rounded corners, and hover animation.</p>
+            <h3 className="text-gray-900 font-semibold mb-2">Basic Card</h3>
+            <p className="text-gray-500">This is a basic card with glassmorphism effect, rounded corners, and hover animation.</p>
           </Card>
           
           <Card hover={false} className="border-blue-500/30">
-            <h3 className="text-white font-semibold mb-2">No Hover Card</h3>
-            <p className="text-gray-400">This card has hover effects disabled and custom border color.</p>
+            <h3 className="text-gray-900 font-semibold mb-2">No Hover Card</h3>
+            <p className="text-gray-500">This card has hover effects disabled and custom border color.</p>
           </Card>
           
           <Card padding="p-8" background="bg-gradient-to-br from-blue-500/10 to-purple-500/10">
-            <h3 className="text-white font-semibold mb-2">Custom Card</h3>
-            <p className="text-gray-400">Custom padding and gradient background.</p>
+            <h3 className="text-gray-900 font-semibold mb-2">Custom Card</h3>
+            <p className="text-gray-500">Custom padding and gradient background.</p>
           </Card>
         </div>
 

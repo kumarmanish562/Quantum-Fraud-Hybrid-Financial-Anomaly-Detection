@@ -67,7 +67,7 @@ const Profile = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
+        <div className="text-gray-900 text-xl">Loading...</div>
       </div>
     );
   }
@@ -75,16 +75,16 @@ const Profile = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
       {/* Navbar */}
-      <nav className="bg-gray-900/80 backdrop-blur-sm border-b border-gray-800">
+      <nav className="bg-gray-50/80 backdrop-blur-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">Q</span>
+                <span className="text-gray-900 font-bold text-xl">Q</span>
               </div>
-              <span className="text-white text-xl font-bold">Quantum Fraud API</span>
+              <span className="text-gray-900 text-xl font-bold">Quantum Fraud API</span>
             </div>
-            <button onClick={logout} className="text-gray-300 hover:text-white transition">
+            <button onClick={logout} className="text-gray-600 hover:text-gray-900 transition">
               Logout
             </button>
           </div>
@@ -93,38 +93,38 @@ const Profile = () => {
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* User Info */}
-        <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 mb-8">
+        <div className="bg-gray-100 backdrop-blur-sm border border-gray-300 rounded-2xl p-8 mb-8">
           <div className="flex items-center space-x-4 mb-6">
             <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full flex items-center justify-center">
-              <span className="text-white text-3xl font-bold">{user?.full_name?.charAt(0)}</span>
+              <span className="text-gray-900 text-3xl font-bold">{user?.full_name?.charAt(0)}</span>
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-white">{user?.full_name}</h1>
-              <p className="text-gray-400">{user?.email}</p>
+              <h1 className="text-3xl font-bold text-gray-900">{user?.full_name}</h1>
+              <p className="text-gray-500">{user?.email}</p>
               {user?.company_name && <p className="text-gray-500 text-sm">{user?.company_name}</p>}
             </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-gray-900/50 rounded-xl p-4">
-              <div className="text-gray-400 text-sm mb-1">Account Status</div>
+            <div className="bg-gray-50/50 rounded-xl p-4">
+              <div className="text-gray-500 text-sm mb-1">Account Status</div>
               <div className="text-green-400 font-semibold">Active</div>
             </div>
-            <div className="bg-gray-900/50 rounded-xl p-4">
-              <div className="text-gray-400 text-sm mb-1">Member Since</div>
-              <div className="text-white font-semibold">{new Date(user?.created_at).toLocaleDateString()}</div>
+            <div className="bg-gray-50/50 rounded-xl p-4">
+              <div className="text-gray-500 text-sm mb-1">Member Since</div>
+              <div className="text-gray-900 font-semibold">{new Date(user?.created_at).toLocaleDateString()}</div>
             </div>
-            <div className="bg-gray-900/50 rounded-xl p-4">
-              <div className="text-gray-400 text-sm mb-1">API Keys</div>
-              <div className="text-white font-semibold">{apiKeys.length}</div>
+            <div className="bg-gray-50/50 rounded-xl p-4">
+              <div className="text-gray-500 text-sm mb-1">API Keys</div>
+              <div className="text-gray-900 font-semibold">{apiKeys.length}</div>
             </div>
           </div>
         </div>
 
         {/* API Keys */}
-        <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8">
+        <div className="bg-gray-100 backdrop-blur-sm border border-gray-300 rounded-2xl p-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-white">API Keys</h2>
+            <h2 className="text-2xl font-bold text-gray-900">API Keys</h2>
             <button className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-4 py-2 rounded-lg hover:shadow-lg transition">
               Create New Key
             </button>
@@ -132,23 +132,23 @@ const Profile = () => {
 
           <div className="space-y-4">
             {apiKeys.map((key) => (
-              <div key={key.id} className="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
+              <div key={key.id} className="bg-gray-50/50 border border-gray-300 rounded-xl p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="text-white font-semibold mb-1">{key.name}</h3>
-                    <p className="text-gray-400 text-sm">Created: {new Date(key.created_at).toLocaleDateString()}</p>
+                    <h3 className="text-gray-900 font-semibold mb-1">{key.name}</h3>
+                    <p className="text-gray-500 text-sm">Created: {new Date(key.created_at).toLocaleDateString()}</p>
                   </div>
                   <div className={`px-3 py-1 rounded-full text-sm ${key.is_active ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
                     {key.is_active ? 'Active' : 'Inactive'}
                   </div>
                 </div>
 
-                <div className="bg-gray-800 rounded-lg p-4 mb-4">
+                <div className="bg-white rounded-lg p-4 mb-4">
                   <div className="flex items-center justify-between">
                     <code className="text-blue-400 text-sm font-mono">{key.api_key}</code>
                     <button
                       onClick={() => copyToClipboard(key.api_key)}
-                      className="text-gray-400 hover:text-white transition"
+                      className="text-gray-500 hover:text-gray-900 transition"
                     >
                       {copiedKey === key.api_key ? (
                         <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -164,7 +164,7 @@ const Profile = () => {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <div className="text-sm text-gray-400">
+                  <div className="text-sm text-gray-500">
                     Usage: {key.requests_count} / {key.requests_limit} requests
                   </div>
                   <button
@@ -189,9 +189,9 @@ const Profile = () => {
 
           {/* API Documentation */}
           <div className="mt-8 bg-blue-500/10 border border-blue-500/30 rounded-xl p-6">
-            <h3 className="text-white font-semibold mb-3">Quick Start</h3>
-            <p className="text-gray-300 text-sm mb-4">Use your API key to make fraud detection requests:</p>
-            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+            <h3 className="text-gray-900 font-semibold mb-3">Quick Start</h3>
+            <p className="text-gray-600 text-sm mb-4">Use your API key to make fraud detection requests:</p>
+            <div className="bg-gray-50 rounded-lg p-4 overflow-x-auto">
               <code className="text-green-400 text-sm">
                 curl -X POST https://api.quantumfraud.com/v1/detect \<br/>
                 &nbsp;&nbsp;-H "Authorization: Bearer YOUR_API_KEY" \<br/>

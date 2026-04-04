@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = ({ isDark }) => {
   return (
-    <section id="about" className={`py-20 px-6 ${isDark ? 'bg-gray-900/50' : 'bg-white'}`}>
+    <section id="about" className={`py-20 px-6 ${isDark ? 'bg-gray-50/50' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -11,11 +11,11 @@ const About = ({ isDark }) => {
               <span className={`text-sm font-medium ${isDark ? 'text-purple-400' : 'text-purple-600'}`}>About Our System</span>
             </div>
             
-            <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${isDark ? 'text-gray-900' : 'text-gray-900'}`}>
               Next-Generation Fraud Detection Technology
             </h2>
             
-            <p className={`text-lg mb-6 leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+            <p className={`text-lg mb-6 leading-relaxed ${isDark ? 'text-gray-600' : 'text-gray-700'}`}>
               Our Quantum-Enhanced Financial Fraud Detection System represents a breakthrough in 
               cybersecurity and financial protection. By combining quantum computing with classical 
               machine learning, we've created a solution that detects fraud patterns invisible to 
@@ -24,11 +24,11 @@ const About = ({ isDark }) => {
 
             {/* Problem Statement */}
             <div className={`rounded-xl p-6 mb-6 ${isDark ? 'bg-red-500/10 border border-red-500/30' : 'bg-red-50 border border-red-200'}`}>
-              <h3 className={`text-xl font-semibold mb-3 flex items-center ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              <h3 className={`text-xl font-semibold mb-3 flex items-center ${isDark ? 'text-gray-900' : 'text-gray-900'}`}>
                 <span className="text-2xl mr-2">⚠️</span>
                 The Problem
               </h3>
-              <p className={`leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+              <p className={`leading-relaxed ${isDark ? 'text-gray-600' : 'text-gray-700'}`}>
                 Financial fraud costs billions annually. Traditional rule-based systems and basic ML 
                 models struggle with sophisticated fraud patterns, resulting in high false positives 
                 and missed fraudulent transactions.
@@ -37,24 +37,24 @@ const About = ({ isDark }) => {
 
             {/* Solution */}
             <div className={`rounded-xl p-6 mb-6 ${isDark ? 'bg-green-500/10 border border-green-500/30' : 'bg-green-50 border border-green-200'}`}>
-              <h3 className={`text-xl font-semibold mb-3 flex items-center ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              <h3 className={`text-xl font-semibold mb-3 flex items-center ${isDark ? 'text-gray-900' : 'text-gray-900'}`}>
                 <span className="text-2xl mr-2">✅</span>
                 Our Solution
               </h3>
-              <p className={`leading-relaxed mb-4 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+              <p className={`leading-relaxed mb-4 ${isDark ? 'text-gray-600' : 'text-gray-700'}`}>
                 Hybrid Quantum-Classical Neural Network (HQNN) combined with XGBoost creates a 
                 powerful fraud detection system that leverages quantum computing advantages:
               </p>
               <ul className="space-y-2">
-                <li className="flex items-start text-gray-300">
+                <li className="flex items-start text-gray-600">
                   <span className="text-green-400 mr-2">▸</span>
                   <span>Quantum entanglement for complex pattern recognition</span>
                 </li>
-                <li className="flex items-start text-gray-300">
+                <li className="flex items-start text-gray-600">
                   <span className="text-green-400 mr-2">▸</span>
                   <span>Superposition enables parallel processing of multiple fraud scenarios</span>
                 </li>
-                <li className="flex items-start text-gray-300">
+                <li className="flex items-start text-gray-600">
                   <span className="text-green-400 mr-2">▸</span>
                   <span>Classical ML provides interpretability and reliability</span>
                 </li>
@@ -63,7 +63,7 @@ const About = ({ isDark }) => {
 
             {/* Benefits */}
             <div className="space-y-3">
-              <h3 className={`text-xl font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Key Benefits</h3>
+              <h3 className={`text-xl font-semibold mb-4 ${isDark ? 'text-gray-900' : 'text-gray-900'}`}>Key Benefits</h3>
               {[
                 { icon: "🎯", text: "Detects complex fraud patterns invisible to traditional systems" },
                 { icon: "💰", text: "Reduces financial losses by up to 95%" },
@@ -71,9 +71,9 @@ const About = ({ isDark }) => {
                 { icon: "📊", text: "Supports data-driven decision making with detailed analytics" },
                 { icon: "🔄", text: "Continuous learning and model improvement" }
               ].map((benefit, index) => (
-                <div key={index} className={`flex items-center space-x-3 rounded-lg p-3 ${isDark ? 'bg-gray-800/50' : 'bg-gray-50 border border-gray-200'}`}>
+                <div key={index} className={`flex items-center space-x-3 rounded-lg p-3 ${isDark ? 'bg-gray-100' : 'bg-gray-50 border border-gray-200'}`}>
                   <div className="text-2xl">{benefit.icon}</div>
-                  <span className={isDark ? 'text-gray-300' : 'text-gray-700'}>{benefit.text}</span>
+                  <span className={isDark ? 'text-gray-600' : 'text-gray-700'}>{benefit.text}</span>
                 </div>
               ))}
             </div>
@@ -86,8 +86,8 @@ const About = ({ isDark }) => {
               <div className="text-7xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4">
                 99.45%
               </div>
-              <div className="text-2xl text-white font-semibold mb-6">Detection Accuracy</div>
-              <p className="text-gray-300 mb-6">
+              <div className="text-2xl text-gray-900 font-semibold mb-6">Detection Accuracy</div>
+              <p className="text-gray-600 mb-6">
                 Our Hybrid Quantum-Classical Neural Network achieved exceptional performance on 
                 credit card fraud detection dataset.
               </p>
@@ -95,7 +95,7 @@ const About = ({ isDark }) => {
               {/* Performance Metrics */}
               <div className="space-y-4">
                 <div>
-                  <div className="flex justify-between text-sm text-gray-300 mb-2">
+                  <div className="flex justify-between text-sm text-gray-600 mb-2">
                     <span className="font-medium">Precision</span>
                     <span className="font-bold">96.2%</span>
                   </div>
@@ -105,7 +105,7 @@ const About = ({ isDark }) => {
                 </div>
                 
                 <div>
-                  <div className="flex justify-between text-sm text-gray-300 mb-2">
+                  <div className="flex justify-between text-sm text-gray-600 mb-2">
                     <span className="font-medium">Recall</span>
                     <span className="font-bold">94.8%</span>
                   </div>
@@ -115,7 +115,7 @@ const About = ({ isDark }) => {
                 </div>
                 
                 <div>
-                  <div className="flex justify-between text-sm text-gray-300 mb-2">
+                  <div className="flex justify-between text-sm text-gray-600 mb-2">
                     <span className="font-medium">F1-Score</span>
                     <span className="font-bold">95.5%</span>
                   </div>
@@ -127,8 +127,8 @@ const About = ({ isDark }) => {
             </div>
 
             {/* Technology Stack */}
-            <div className={`border rounded-2xl p-6 ${isDark ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-200 shadow-md'}`}>
-              <h3 className={`text-xl font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Technology Stack</h3>
+            <div className={`border rounded-2xl p-6 ${isDark ? 'bg-gray-100 border-gray-300' : 'bg-white border-gray-200 shadow-md'}`}>
+              <h3 className={`text-xl font-semibold mb-4 ${isDark ? 'text-gray-900' : 'text-gray-900'}`}>Technology Stack</h3>
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { name: "PennyLane", desc: "Quantum ML" },
@@ -138,9 +138,9 @@ const About = ({ isDark }) => {
                   { name: "React", desc: "Frontend UI" },
                   { name: "PostgreSQL", desc: "Database" }
                 ].map((tech, index) => (
-                  <div key={index} className={`rounded-lg p-3 text-center ${isDark ? 'bg-gray-900/50' : 'bg-gray-50 border border-gray-200'}`}>
-                    <div className={`font-semibold text-sm ${isDark ? 'text-white' : 'text-gray-900'}`}>{tech.name}</div>
-                    <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{tech.desc}</div>
+                  <div key={index} className={`rounded-lg p-3 text-center ${isDark ? 'bg-gray-50/50' : 'bg-gray-50 border border-gray-200'}`}>
+                    <div className={`font-semibold text-sm ${isDark ? 'text-gray-900' : 'text-gray-900'}`}>{tech.name}</div>
+                    <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>{tech.desc}</div>
                   </div>
                 ))}
               </div>
@@ -148,18 +148,18 @@ const About = ({ isDark }) => {
 
             {/* Dataset Info */}
             <div className={`rounded-2xl p-6 border ${isDark ? 'bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-500/30' : 'bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200'}`}>
-              <h3 className={`text-xl font-semibold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>Dataset</h3>
-              <p className={`text-sm mb-3 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+              <h3 className={`text-xl font-semibold mb-3 ${isDark ? 'text-gray-900' : 'text-gray-900'}`}>Dataset</h3>
+              <p className={`text-sm mb-3 ${isDark ? 'text-gray-600' : 'text-gray-700'}`}>
                 Trained on Kaggle Credit Card Fraud Detection dataset with 284,807 transactions
               </p>
               <div className="grid grid-cols-2 gap-3 text-center">
-                <div className={`rounded-lg p-3 ${isDark ? 'bg-gray-900/50' : 'bg-white border border-gray-200'}`}>
-                  <div className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>284K+</div>
-                  <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Transactions</div>
+                <div className={`rounded-lg p-3 ${isDark ? 'bg-gray-50/50' : 'bg-white border border-gray-200'}`}>
+                  <div className={`text-2xl font-bold ${isDark ? 'text-gray-900' : 'text-gray-900'}`}>284K+</div>
+                  <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>Transactions</div>
                 </div>
-                <div className={`rounded-lg p-3 ${isDark ? 'bg-gray-900/50' : 'bg-white border border-gray-200'}`}>
-                  <div className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>30</div>
-                  <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Features</div>
+                <div className={`rounded-lg p-3 ${isDark ? 'bg-gray-50/50' : 'bg-white border border-gray-200'}`}>
+                  <div className={`text-2xl font-bold ${isDark ? 'text-gray-900' : 'text-gray-900'}`}>30</div>
+                  <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>Features</div>
                 </div>
               </div>
             </div>

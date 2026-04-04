@@ -151,8 +151,8 @@ const Transactions = () => {
     return (
       <div className="flex items-center justify-center h-screen">
         <div className="text-center">
-          <div className="text-white text-xl mb-2">Loading transactions...</div>
-          <div className="text-gray-400 text-sm">Fetching real-time data</div>
+          <div className="text-gray-900 text-xl mb-2">Loading transactions...</div>
+          <div className="text-gray-500 text-sm">Fetching real-time data</div>
         </div>
       </div>
     );
@@ -169,7 +169,7 @@ const Transactions = () => {
       case 'FRAUD':
         return `${baseClasses} bg-red-500/20 text-red-400`;
       default:
-        return `${baseClasses} bg-gray-500/20 text-gray-400`;
+        return `${baseClasses} bg-gray-500/20 text-gray-500`;
     }
   };
 
@@ -180,13 +180,13 @@ const Transactions = () => {
     
     return (
       <div className="flex items-center space-x-2">
-        <div className="w-16 bg-gray-800 rounded-full h-2">
+        <div className="w-16 bg-white rounded-full h-2">
           <div
             className={`h-2 rounded-full bg-gradient-to-r ${colorClass}`}
             style={{ width: `${score}%` }}
           ></div>
         </div>
-        <span className="text-white text-sm font-medium">{score}%</span>
+        <span className="text-gray-900 text-sm font-medium">{score}%</span>
       </div>
     );
   };
@@ -206,18 +206,18 @@ const Transactions = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white mb-2">Transaction Ledger</h1>
-          <p className="text-gray-400">Monitoring {filteredTransactions.length.toLocaleString()} operations in the last 24 hours.</p>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Transaction Ledger</h1>
+          <p className="text-gray-500">Monitoring {filteredTransactions.length.toLocaleString()} operations in the last 24 hours.</p>
         </div>
       </div>
 
       {/* Controls */}
-      <div className="flex items-center justify-between bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6">
+      <div className="flex items-center justify-between bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-6">
         <div className="flex items-center space-x-4">
           {/* Dropdown */}
           <div className="relative">
             <select 
-              className="bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2 text-gray-300 focus:outline-none focus:border-blue-500/50 appearance-none pr-8"
+              className="bg-gray-100 border border-gray-300 rounded-xl px-4 py-2 text-gray-600 focus:outline-none focus:border-blue-500/50 appearance-none pr-8"
               value="All Transactions"
               onChange={() => {}}
             >
@@ -240,7 +240,7 @@ const Transactions = () => {
                 className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
                   statusFilter === filter
                     ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                    : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
                 }`}
               >
                 {filter}
@@ -259,7 +259,7 @@ const Transactions = () => {
               setSearchTerm(e.target.value);
               setCurrentPage(1);
             }}
-            className="bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2 pl-10 text-gray-300 placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-gray-800/80 transition-all duration-200 w-80"
+            className="bg-gray-100 border border-gray-300 rounded-xl px-4 py-2 pl-10 text-gray-600 placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-white/80 transition-all duration-200 w-80"
           />
           <svg className="absolute left-3 top-2.5 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -268,16 +268,16 @@ const Transactions = () => {
       </div>
 
       {/* Transaction Table */}
-      <div className="bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl overflow-hidden">
+      <div className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl overflow-hidden">
         {/* Table Header */}
-        <div className="grid grid-cols-7 gap-4 p-6 border-b border-gray-800/50 bg-gray-900/30">
-          <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">Transaction ID</div>
-          <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">Entity Name</div>
-          <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">Amount</div>
-          <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">Time</div>
-          <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">Status</div>
-          <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">Fraud Score</div>
-          <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">Action</div>
+        <div className="grid grid-cols-7 gap-4 p-6 border-b border-gray-200 bg-gray-100">
+          <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">Transaction ID</div>
+          <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">Entity Name</div>
+          <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">Amount</div>
+          <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">Time</div>
+          <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">Status</div>
+          <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">Fraud Score</div>
+          <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">Action</div>
         </div>
 
         {/* Table Body */}
@@ -287,23 +287,23 @@ const Transactions = () => {
               <div
                 key={transaction.fullId || transaction.id}
                 onClick={() => handleRowClick(transaction)}
-                className="grid grid-cols-7 gap-4 p-6 hover:bg-gray-800/30 transition-all duration-200 cursor-pointer group"
+                className="grid grid-cols-7 gap-4 p-6 hover:bg-white/30 transition-all duration-200 cursor-pointer group"
               >
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center text-xs font-medium text-gray-300">
+                  <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center text-xs font-medium text-gray-600">
                     {transaction.icon}
                   </div>
                   <span className="text-blue-400 font-mono text-sm">{transaction.id}</span>
                 </div>
                 
                 <div>
-                  <div className="text-white font-medium text-sm">{transaction.entityName}</div>
-                  <div className="text-gray-400 text-xs capitalize">{transaction.entityType}</div>
+                  <div className="text-gray-900 font-medium text-sm">{transaction.entityName}</div>
+                  <div className="text-gray-500 text-xs capitalize">{transaction.entityType}</div>
                 </div>
                 
                 <div className="text-cyan-400 font-bold text-sm">{transaction.amount}</div>
                 
-                <div className="text-gray-300 text-sm">{transaction.time}</div>
+                <div className="text-gray-600 text-sm">{transaction.time}</div>
                 
                 <div>
                   <span className={getStatusBadge(transaction.status, transaction.fraudScore)}>
@@ -316,7 +316,7 @@ const Transactions = () => {
                 </div>
                 
                 <div className="flex items-center">
-                  <svg className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-gray-500 group-hover:text-gray-900 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
@@ -327,7 +327,7 @@ const Transactions = () => {
               <svg className="w-16 h-16 mx-auto mb-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              <div className="text-gray-400 text-lg mb-2">No transactions found</div>
+              <div className="text-gray-500 text-lg mb-2">No transactions found</div>
               <div className="text-gray-500 text-sm">
                 {searchTerm || statusFilter !== 'All' 
                   ? 'Try adjusting your filters' 
@@ -338,8 +338,8 @@ const Transactions = () => {
         </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-between p-6 border-t border-gray-800/50">
-          <div className="text-gray-400 text-sm">
+        <div className="flex items-center justify-between p-6 border-t border-gray-200">
+          <div className="text-gray-500 text-sm">
             Showing {filteredTransactions.length > 0 ? startIndex + 1 : 0}-{endIndex} of {filteredTransactions.length.toLocaleString()}
           </div>
           
@@ -347,7 +347,7 @@ const Transactions = () => {
             <button
               onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
               disabled={currentPage === 1 || totalPages === 0}
-              className="p-2 text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-200"
+              className="p-2 text-gray-500 hover:text-gray-900 disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-200"
               title="Previous page"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -374,7 +374,7 @@ const Transactions = () => {
                   className={`w-8 h-8 rounded-lg text-sm font-medium transition-all duration-200 ${
                     currentPage === pageNum
                       ? 'bg-blue-500 text-white'
-                      : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                      : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
                   }`}
                 >
                   {pageNum}
@@ -384,10 +384,10 @@ const Transactions = () => {
             
             {totalPages > 5 && currentPage < totalPages - 2 && (
               <>
-                <span className="text-gray-400">...</span>
+                <span className="text-gray-500">...</span>
                 <button
                   onClick={() => setCurrentPage(totalPages)}
-                  className="w-8 h-8 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-gray-800/50 transition-all duration-200"
+                  className="w-8 h-8 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-all duration-200"
                 >
                   {totalPages}
                 </button>
@@ -397,7 +397,7 @@ const Transactions = () => {
             <button
               onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
               disabled={currentPage === totalPages || totalPages === 0}
-              className="p-2 text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-200"
+              className="p-2 text-gray-500 hover:text-gray-900 disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-200"
               title="Next page"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -411,12 +411,12 @@ const Transactions = () => {
       {/* Transaction Detail Modal */}
       {showModal && selectedTransaction && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-[#111827] border border-gray-800/50 rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-white border border-gray-200 rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-bold text-white">Transaction Details</h3>
+              <h3 className="text-xl font-bold text-gray-900">Transaction Details</h3>
               <button
                 onClick={closeModal}
-                className="p-2 text-gray-400 hover:text-white transition-colors duration-200"
+                className="p-2 text-gray-500 hover:text-gray-900 transition-colors duration-200"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -427,50 +427,50 @@ const Transactions = () => {
             <div className="space-y-6">
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <label className="text-gray-400 text-sm font-medium">Transaction ID</label>
-                  <p className="text-white font-mono text-lg">{selectedTransaction.id}</p>
+                  <label className="text-gray-500 text-sm font-medium">Transaction ID</label>
+                  <p className="text-gray-900 font-mono text-lg">{selectedTransaction.id}</p>
                   <p className="text-gray-500 text-xs mt-1">Full ID: {selectedTransaction.fullId}</p>
                 </div>
                 <div>
-                  <label className="text-gray-400 text-sm font-medium">Amount</label>
+                  <label className="text-gray-500 text-sm font-medium">Amount</label>
                   <p className="text-cyan-400 font-bold text-lg">{selectedTransaction.amount}</p>
                 </div>
               </div>
               
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <label className="text-gray-400 text-sm font-medium">Entity Name</label>
-                  <p className="text-white font-medium">{selectedTransaction.entityName}</p>
-                  <p className="text-gray-400 text-sm capitalize">{selectedTransaction.entityType}</p>
+                  <label className="text-gray-500 text-sm font-medium">Entity Name</label>
+                  <p className="text-gray-900 font-medium">{selectedTransaction.entityName}</p>
+                  <p className="text-gray-500 text-sm capitalize">{selectedTransaction.entityType}</p>
                 </div>
                 <div>
-                  <label className="text-gray-400 text-sm font-medium">Location</label>
-                  <p className="text-white">{selectedTransaction.location || 'N/A'}</p>
+                  <label className="text-gray-500 text-sm font-medium">Location</label>
+                  <p className="text-gray-900">{selectedTransaction.location || 'N/A'}</p>
                 </div>
               </div>
               
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <label className="text-gray-400 text-sm font-medium">Time</label>
-                  <p className="text-white">{selectedTransaction.time}</p>
+                  <label className="text-gray-500 text-sm font-medium">Time</label>
+                  <p className="text-gray-900">{selectedTransaction.time}</p>
                   <p className="text-gray-500 text-xs mt-1">
                     {selectedTransaction.timestamp ? new Date(selectedTransaction.timestamp).toLocaleString() : 'N/A'}
                   </p>
                 </div>
                 <div>
-                  <label className="text-gray-400 text-sm font-medium">User ID</label>
-                  <p className="text-white font-mono text-sm">{selectedTransaction.userId || 'N/A'}</p>
+                  <label className="text-gray-500 text-sm font-medium">User ID</label>
+                  <p className="text-gray-900 font-mono text-sm">{selectedTransaction.userId || 'N/A'}</p>
                 </div>
               </div>
               
               <div>
-                <label className="text-gray-400 text-sm font-medium">Description</label>
-                <p className="text-white mt-1">{selectedTransaction.description || 'No description available'}</p>
+                <label className="text-gray-500 text-sm font-medium">Description</label>
+                <p className="text-gray-900 mt-1">{selectedTransaction.description || 'No description available'}</p>
               </div>
               
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <label className="text-gray-400 text-sm font-medium">Status</label>
+                  <label className="text-gray-500 text-sm font-medium">Status</label>
                   <div className="mt-2">
                     <span className={getStatusBadge(selectedTransaction.status, selectedTransaction.fraudScore)}>
                       {selectedTransaction.status}
@@ -478,19 +478,19 @@ const Transactions = () => {
                   </div>
                 </div>
                 <div>
-                  <label className="text-gray-400 text-sm font-medium">Fraud Score</label>
+                  <label className="text-gray-500 text-sm font-medium">Fraud Score</label>
                   <div className="mt-2">
                     {getFraudScoreBar(selectedTransaction.fraudScore)}
                   </div>
                 </div>
               </div>
               
-              <div className="pt-4 border-t border-gray-800/50">
+              <div className="pt-4 border-t border-gray-200">
                 <div className="flex items-center space-x-4">
                   <button className="px-4 py-2 bg-blue-500 text-white rounded-xl font-medium hover:bg-blue-600 transition-colors duration-200">
                     View Full Details
                   </button>
-                  <button className="px-4 py-2 bg-gray-800 text-gray-300 rounded-xl font-medium hover:bg-gray-700 transition-colors duration-200">
+                  <button className="px-4 py-2 bg-white text-gray-600 rounded-xl font-medium hover:bg-gray-700 transition-colors duration-200">
                     Export Data
                   </button>
                 </div>

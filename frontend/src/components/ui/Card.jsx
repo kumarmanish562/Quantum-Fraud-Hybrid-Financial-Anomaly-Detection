@@ -5,8 +5,8 @@ const Card = ({
   className = '', 
   hover = true, 
   padding = 'p-6',
-  background = 'bg-[#111827]/60',
-  border = 'border-gray-800/50',
+  background = 'bg-white/60',
+  border = 'border-gray-200',
   onClick,
   ...props 
 }) => {
@@ -20,7 +20,7 @@ const Card = ({
     shadow-lg
     transition-all 
     duration-200
-    ${hover ? 'hover:bg-[#111827]/80 hover:shadow-xl hover:shadow-blue-500/10' : ''}
+    ${hover ? 'hover:bg-white/80 hover:shadow-xl hover:shadow-blue-500/10' : ''}
     ${onClick ? 'cursor-pointer' : ''}
   `;
 
@@ -51,8 +51,8 @@ export const StatCard = ({ title, value, icon, change, changeType = 'positive', 
           </span>
         )}
       </div>
-      <h3 className="text-gray-400 text-sm font-medium mb-1 uppercase tracking-wider">{title}</h3>
-      <p className="text-white text-3xl font-bold">{value}</p>
+      <h3 className="text-gray-500 text-sm font-medium mb-1 uppercase tracking-wider">{title}</h3>
+      <p className="text-gray-900 text-3xl font-bold">{value}</p>
     </Card>
   );
 };
@@ -85,8 +85,8 @@ export const AlertCard = ({ severity, title, description, time, transactionId, a
         return {
           bgColor: 'bg-gray-500/10',
           borderColor: 'border-gray-500/30',
-          textColor: 'text-gray-400',
-          badgeColor: 'bg-gray-500/20 text-gray-400'
+          textColor: 'text-gray-500',
+          badgeColor: 'bg-gray-500/20 text-gray-500'
         };
     }
   };
@@ -108,12 +108,12 @@ export const AlertCard = ({ severity, title, description, time, transactionId, a
           </div>
           <div className="flex-1">
             <div className="flex items-center space-x-3 mb-2">
-              <h3 className="text-white font-semibold">{title}</h3>
+              <h3 className="text-gray-900 font-semibold">{title}</h3>
               <span className={`px-2 py-1 rounded-full text-xs font-medium ${config.badgeColor}`}>
                 {severity}
               </span>
             </div>
-            <p className="text-gray-300 text-sm mb-3">{description}</p>
+            <p className="text-gray-600 text-sm mb-3">{description}</p>
             {transactionId && (
               <div className="flex items-center space-x-4 text-sm">
                 <span className="text-blue-400 font-mono">{transactionId}</span>
@@ -122,7 +122,7 @@ export const AlertCard = ({ severity, title, description, time, transactionId, a
             )}
           </div>
         </div>
-        <div className="text-gray-400 text-sm">{time}</div>
+        <div className="text-gray-500 text-sm">{time}</div>
       </div>
     </Card>
   );

@@ -138,8 +138,8 @@ const RealTimeDetection = () => {
     <div className="space-y-8">
       {/* Header */}
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-white mb-4">Real-Time Fraud Detection</h1>
-        <p className="text-gray-400 text-lg">AI-powered transaction analysis with quantum-enhanced algorithms</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">Real-Time Fraud Detection</h1>
+        <p className="text-gray-500 text-lg">AI-powered transaction analysis with quantum-enhanced algorithms</p>
         
         {/* API Error Alert */}
         {apiError && (
@@ -159,7 +159,7 @@ const RealTimeDetection = () => {
             modelStatus ? 'from-green-500/20 to-emerald-500/20 border-green-500/30' : 'from-gray-500/20 to-gray-500/20 border-gray-500/30'
           } border rounded-full`}>
             <div className={`w-2 h-2 ${modelStatus ? 'bg-green-400 animate-pulse' : 'bg-gray-400'} rounded-full`}></div>
-            <span className={`${modelStatus ? 'text-green-400' : 'text-gray-400'} text-sm font-medium`}>
+            <span className={`${modelStatus ? 'text-green-400' : 'text-gray-500'} text-sm font-medium`}>
               {modelStatus ? 'AI System Online' : 'Connecting...'}
             </span>
           </div>
@@ -176,9 +176,9 @@ const RealTimeDetection = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Input Form */}
-        <div className="bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8">
+        <div className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-white">Transaction Details</h2>
+            <h2 className="text-xl font-semibold text-gray-900">Transaction Details</h2>
             <button
               onClick={() => setShowAdvanced(!showAdvanced)}
               className="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors duration-200"
@@ -191,11 +191,11 @@ const RealTimeDetection = () => {
             {/* Required Fields */}
             <div className="space-y-4">
               <div>
-                <label className="block text-gray-300 text-sm font-medium mb-2">
+                <label className="block text-gray-600 text-sm font-medium mb-2">
                   Transaction Amount *
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-3 text-gray-400">₹</span>
+                  <span className="absolute left-3 top-3 text-gray-500">₹</span>
                   <input
                     type="number"
                     name="amount"
@@ -205,13 +205,13 @@ const RealTimeDetection = () => {
                     step="0.01"
                     min="0"
                     required
-                    className="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 pl-8 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-gray-800/80 transition-all duration-200"
+                    className="w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 pl-8 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-white/80 transition-all duration-200"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-gray-300 text-sm font-medium mb-2">
+                <label className="block text-gray-600 text-sm font-medium mb-2">
                   Transaction Time
                 </label>
                 <input
@@ -219,16 +219,16 @@ const RealTimeDetection = () => {
                   name="time"
                   value={formData.time}
                   onChange={handleInputChange}
-                  className="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50 focus:bg-gray-800/80 transition-all duration-200"
+                  className="w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500/50 focus:bg-white/80 transition-all duration-200"
                 />
               </div>
             </div>
 
             {/* Advanced Fields */}
             {showAdvanced && (
-              <div className="space-y-4 pt-4 border-t border-gray-800/50">
+              <div className="space-y-4 pt-4 border-t border-gray-200">
                 <div>
-                  <label className="block text-gray-300 text-sm font-medium mb-2">
+                  <label className="block text-gray-600 text-sm font-medium mb-2">
                     Location
                   </label>
                   <input
@@ -237,19 +237,19 @@ const RealTimeDetection = () => {
                     value={formData.location}
                     onChange={handleInputChange}
                     placeholder="e.g., New York, USA"
-                    className="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-gray-800/80 transition-all duration-200"
+                    className="w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-white/80 transition-all duration-200"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-gray-300 text-sm font-medium mb-2">
+                  <label className="block text-gray-600 text-sm font-medium mb-2">
                     Merchant Type
                   </label>
                   <select
                     name="merchantType"
                     value={formData.merchantType}
                     onChange={handleInputChange}
-                    className="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50 focus:bg-gray-800/80 transition-all duration-200"
+                    className="w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500/50 focus:bg-white/80 transition-all duration-200"
                   >
                     <option value="">Select merchant type</option>
                     <option value="retail">Retail Store</option>
@@ -262,14 +262,14 @@ const RealTimeDetection = () => {
                 </div>
 
                 <div>
-                  <label className="block text-gray-300 text-sm font-medium mb-2">
+                  <label className="block text-gray-600 text-sm font-medium mb-2">
                     Card Type
                   </label>
                   <select
                     name="cardType"
                     value={formData.cardType}
                     onChange={handleInputChange}
-                    className="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50 focus:bg-gray-800/80 transition-all duration-200"
+                    className="w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500/50 focus:bg-white/80 transition-all duration-200"
                   >
                     <option value="">Select card type</option>
                     <option value="credit">Credit Card</option>
@@ -279,7 +279,7 @@ const RealTimeDetection = () => {
                 </div>
 
                 <div>
-                  <label className="block text-gray-300 text-sm font-medium mb-2">
+                  <label className="block text-gray-600 text-sm font-medium mb-2">
                     Transaction Frequency (last 24h)
                   </label>
                   <input
@@ -289,7 +289,7 @@ const RealTimeDetection = () => {
                     onChange={handleInputChange}
                     placeholder="Number of transactions"
                     min="0"
-                    className="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-gray-800/80 transition-all duration-200"
+                    className="w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-white/80 transition-all duration-200"
                   />
                 </div>
               </div>
@@ -315,7 +315,7 @@ const RealTimeDetection = () => {
               <button
                 type="button"
                 onClick={resetForm}
-                className="px-6 py-3 bg-gray-800 text-gray-300 rounded-2xl font-medium hover:bg-gray-700 transition-colors duration-200"
+                className="px-6 py-3 bg-white text-gray-600 rounded-2xl font-medium hover:bg-gray-700 transition-colors duration-200"
               >
                 Reset
               </button>
@@ -324,11 +324,11 @@ const RealTimeDetection = () => {
         </div>
 
         {/* Results Section */}
-        <div className="bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8">
-          <h2 className="text-xl font-semibold text-white mb-6">Detection Results</h2>
+        <div className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-8">
+          <h2 className="text-xl font-semibold text-gray-900 mb-6">Detection Results</h2>
           
           {!result && !isLoading && (
-            <div className="flex items-center justify-center h-64 text-gray-400">
+            <div className="flex items-center justify-center h-64 text-gray-500">
               <div className="text-center">
                 <svg className="w-16 h-16 mx-auto mb-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -342,8 +342,8 @@ const RealTimeDetection = () => {
             <div className="flex items-center justify-center h-64">
               <div className="text-center">
                 <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
-                <p className="text-white font-medium">AI Analysis in Progress...</p>
-                <p className="text-gray-400 text-sm mt-2">Processing transaction patterns</p>
+                <p className="text-gray-900 font-medium">AI Analysis in Progress...</p>
+                <p className="text-gray-500 text-sm mt-2">Processing transaction patterns</p>
               </div>
             </div>
           )}
@@ -358,7 +358,7 @@ const RealTimeDetection = () => {
                   }`}>
                     {result.fraudScore}%
                   </div>
-                  <p className="text-gray-400">Fraud Score</p>
+                  <p className="text-gray-500">Fraud Score</p>
                 </div>
                 
                 {/* Status Badge */}
@@ -398,20 +398,20 @@ const RealTimeDetection = () => {
 
               {/* Additional Metrics */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-gray-800/30 rounded-xl p-4 text-center">
-                  <div className="text-2xl font-bold text-white mb-1">{result.confidence}%</div>
-                  <div className="text-gray-400 text-sm">Confidence</div>
+                <div className="bg-white/30 rounded-xl p-4 text-center">
+                  <div className="text-2xl font-bold text-gray-900 mb-1">{result.confidence}%</div>
+                  <div className="text-gray-500 text-sm">Confidence</div>
                 </div>
-                <div className="bg-gray-800/30 rounded-xl p-4 text-center">
-                  <div className="text-2xl font-bold text-white mb-1">{result.processingTime}ms</div>
-                  <div className="text-gray-400 text-sm">Processing Time</div>
+                <div className="bg-white/30 rounded-xl p-4 text-center">
+                  <div className="text-2xl font-bold text-gray-900 mb-1">{result.processingTime}ms</div>
+                  <div className="text-gray-500 text-sm">Processing Time</div>
                 </div>
               </div>
 
               {/* Risk Factors */}
               {result.riskFactors.length > 0 && (
                 <div>
-                  <h3 className="text-white font-medium mb-3">Risk Factors Detected:</h3>
+                  <h3 className="text-gray-900 font-medium mb-3">Risk Factors Detected:</h3>
                   <div className="space-y-2">
                     {result.riskFactors.map((factor, index) => (
                       <div key={index} className="flex items-center space-x-2 text-yellow-400 text-sm">

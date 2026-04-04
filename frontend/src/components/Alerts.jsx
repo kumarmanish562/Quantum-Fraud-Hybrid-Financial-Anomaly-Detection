@@ -135,8 +135,8 @@ const Alerts = () => {
     return (
       <div className="flex items-center justify-center h-screen">
         <div className="text-center">
-          <div className="text-white text-xl mb-2">Loading alerts...</div>
-          <div className="text-gray-400 text-sm">Fetching real-time fraud alerts</div>
+          <div className="text-gray-900 text-xl mb-2">Loading alerts...</div>
+          <div className="text-gray-500 text-sm">Fetching real-time fraud alerts</div>
         </div>
       </div>
     );
@@ -168,9 +168,9 @@ const Alerts = () => {
       default:
         return {
           bgColor: 'bg-gray-500/10 border-gray-500/30',
-          textColor: 'text-gray-400',
-          badgeColor: 'bg-gray-500/20 text-gray-400',
-          iconColor: 'text-gray-400'
+          textColor: 'text-gray-500',
+          badgeColor: 'bg-gray-500/20 text-gray-500',
+          iconColor: 'text-gray-500'
         };
     }
   };
@@ -189,7 +189,7 @@ const Alerts = () => {
       case 'Cleared':
         return 'bg-green-500/20 text-green-400';
       default:
-        return 'bg-gray-500/20 text-gray-400';
+        return 'bg-gray-500/20 text-gray-500';
     }
   };
 
@@ -198,8 +198,8 @@ const Alerts = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white mb-2">Fraud Alerts</h1>
-          <p className="text-gray-400">Real-time monitoring and threat detection alerts</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Fraud Alerts</h1>
+          <p className="text-gray-500">Real-time monitoring and threat detection alerts</p>
         </div>
         
         {/* Alert Summary */}
@@ -219,11 +219,11 @@ const Alerts = () => {
         </div>
       </div>
       {/* Controls */}
-      <div className="flex items-center justify-between bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6">
+      <div className="flex items-center justify-between bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-6">
         <div className="flex items-center space-x-4">
           {/* Filter Buttons */}
           <div className="flex items-center space-x-2">
-            <span className="text-gray-400 text-sm font-medium">Filter:</span>
+            <span className="text-gray-500 text-sm font-medium">Filter:</span>
             {['All', 'High', 'Medium', 'Low'].map((severity) => (
               <button
                 key={severity}
@@ -231,7 +231,7 @@ const Alerts = () => {
                 className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
                   filter === severity
                     ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                    : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
                 }`}
               >
                 {severity}
@@ -242,11 +242,11 @@ const Alerts = () => {
 
         {/* Sort Options */}
         <div className="flex items-center space-x-4">
-          <span className="text-gray-400 text-sm font-medium">Sort by:</span>
+          <span className="text-gray-500 text-sm font-medium">Sort by:</span>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2 text-gray-300 focus:outline-none focus:border-blue-500/50 appearance-none"
+            className="bg-gray-100 border border-gray-300 rounded-xl px-4 py-2 text-gray-600 focus:outline-none focus:border-blue-500/50 appearance-none"
           >
             <option value="newest">Newest First</option>
             <option value="severity">Severity</option>
@@ -264,7 +264,7 @@ const Alerts = () => {
           return (
             <div
               key={alert.id}
-              className={`bg-[#111827]/60 backdrop-blur-sm border rounded-2xl p-6 hover:bg-[#111827]/80 transition-all duration-200 cursor-pointer ${severityConfig.bgColor}`}
+              className={`bg-white/60 backdrop-blur-sm border rounded-2xl p-6 hover:bg-white/80 transition-all duration-200 cursor-pointer ${severityConfig.bgColor}`}
             >
               <div className="flex items-start justify-between">
                 {/* Left Section */}
@@ -279,7 +279,7 @@ const Alerts = () => {
                   {/* Alert Details */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center space-x-3 mb-2">
-                      <h3 className="text-white font-semibold text-lg">{alert.type}</h3>
+                      <h3 className="text-gray-900 font-semibold text-lg">{alert.type}</h3>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${severityConfig.badgeColor}`}>
                         {alert.severity}
                       </span>
@@ -288,25 +288,25 @@ const Alerts = () => {
                       </span>
                     </div>
                     
-                    <p className="text-gray-300 text-sm mb-3">{alert.description}</p>
+                    <p className="text-gray-600 text-sm mb-3">{alert.description}</p>
                     
                     {/* Transaction Details */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                       <div>
-                        <span className="text-gray-400">Transaction ID</span>
+                        <span className="text-gray-500">Transaction ID</span>
                         <p className="text-blue-400 font-mono font-medium">{alert.transactionId}</p>
                       </div>
                       <div>
-                        <span className="text-gray-400">Amount</span>
+                        <span className="text-gray-500">Amount</span>
                         <p className="text-cyan-400 font-bold">{alert.amount}</p>
                       </div>
                       <div>
-                        <span className="text-gray-400">Merchant</span>
-                        <p className="text-white font-medium">{alert.merchant}</p>
+                        <span className="text-gray-500">Merchant</span>
+                        <p className="text-gray-900 font-medium">{alert.merchant}</p>
                       </div>
                       <div>
-                        <span className="text-gray-400">Location</span>
-                        <p className="text-gray-300">{alert.location}</p>
+                        <span className="text-gray-500">Location</span>
+                        <p className="text-gray-600">{alert.location}</p>
                       </div>
                     </div>
                   </div>
@@ -315,7 +315,7 @@ const Alerts = () => {
                 {/* Right Section */}
                 <div className="flex flex-col items-end space-y-2 flex-shrink-0">
                   {/* Time */}
-                  <div className="flex items-center space-x-2 text-gray-400 text-sm">
+                  <div className="flex items-center space-x-2 text-gray-500 text-sm">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -332,7 +332,7 @@ const Alerts = () => {
                     <button className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-lg text-xs font-medium hover:bg-blue-500/30 transition-colors duration-200">
                       Investigate
                     </button>
-                    <button className="px-3 py-1 bg-gray-800/50 text-gray-300 rounded-lg text-xs font-medium hover:bg-gray-700/50 transition-colors duration-200">
+                    <button className="px-3 py-1 bg-gray-100 text-gray-600 rounded-lg text-xs font-medium hover:bg-gray-700/50 transition-colors duration-200">
                       Dismiss
                     </button>
                   </div>
@@ -346,7 +346,7 @@ const Alerts = () => {
       {/* Load More */}
       {sortedAlerts.length > 0 && (
         <div className="text-center">
-          <button className="px-6 py-3 bg-gray-800/50 text-gray-300 rounded-2xl font-medium hover:bg-gray-700/50 transition-colors duration-200">
+          <button className="px-6 py-3 bg-gray-100 text-gray-600 rounded-2xl font-medium hover:bg-gray-700/50 transition-colors duration-200">
             Load More Alerts
           </button>
         </div>
@@ -358,7 +358,7 @@ const Alerts = () => {
           <svg className="w-16 h-16 text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <h3 className="text-gray-400 text-lg font-medium mb-2">No alerts found</h3>
+          <h3 className="text-gray-500 text-lg font-medium mb-2">No alerts found</h3>
           <p className="text-gray-500">No alerts match the current filter criteria.</p>
         </div>
       )}

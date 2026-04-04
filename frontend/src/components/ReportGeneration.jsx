@@ -178,8 +178,8 @@ const ReportGeneration = () => {
     <div className="space-y-8 bg-[#0F172A] min-h-screen">
       {/* Header */}
       <div className={`transition-all duration-500 ${animationStage >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-        <h1 className="text-3xl font-bold text-white mb-2">Report Generation</h1>
-        <p className="text-gray-400">Generate comprehensive fraud detection reports with advanced analytics</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Report Generation</h1>
+        <p className="text-gray-500">Generate comprehensive fraud detection reports with advanced analytics</p>
       </div>
 
       {/* Filters Panel */}
@@ -187,35 +187,35 @@ const ReportGeneration = () => {
         background="bg-[#1E293B]" 
         className={`transition-all duration-500 delay-100 ${animationStage >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
       >
-        <h2 className="text-xl font-semibold text-white mb-6">Report Filters</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-6">Report Filters</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Date Range */}
           <div>
-            <label className="block text-gray-300 text-sm font-medium mb-2">Date Range</label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">Date Range</label>
             <div className="space-y-2">
               <input
                 type="date"
                 value={filters.dateRange.startDate}
                 onChange={(e) => handleFilterChange('dateRange', { ...filters.dateRange, startDate: e.target.value })}
-                className="w-full bg-[#0F172A] border border-gray-600/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50 transition-colors duration-200"
+                className="w-full bg-[#0F172A] border border-gray-600/50 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500/50 transition-colors duration-200"
               />
               <input
                 type="date"
                 value={filters.dateRange.endDate}
                 onChange={(e) => handleFilterChange('dateRange', { ...filters.dateRange, endDate: e.target.value })}
-                className="w-full bg-[#0F172A] border border-gray-600/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50 transition-colors duration-200"
+                className="w-full bg-[#0F172A] border border-gray-600/50 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500/50 transition-colors duration-200"
               />
             </div>
           </div>
 
           {/* Transaction Type */}
           <div>
-            <label className="block text-gray-300 text-sm font-medium mb-2">Transaction Type</label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">Transaction Type</label>
             <select
               value={filters.transactionType}
               onChange={(e) => handleFilterChange('transactionType', e.target.value)}
-              className="w-full bg-[#0F172A] border border-gray-600/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50 transition-colors duration-200"
+              className="w-full bg-[#0F172A] border border-gray-600/50 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500/50 transition-colors duration-200"
             >
               <option value="All">All Transactions</option>
               <option value="Fraud">Fraud Only</option>
@@ -225,32 +225,32 @@ const ReportGeneration = () => {
 
           {/* Amount Range */}
           <div>
-            <label className="block text-gray-300 text-sm font-medium mb-2">Amount Range</label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">Amount Range</label>
             <div className="space-y-2">
               <input
                 type="number"
                 placeholder="Min Amount"
                 value={filters.amountRange.min}
                 onChange={(e) => handleFilterChange('amountRange', { ...filters.amountRange, min: e.target.value })}
-                className="w-full bg-[#0F172A] border border-gray-600/50 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors duration-200"
+                className="w-full bg-[#0F172A] border border-gray-600/50 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors duration-200"
               />
               <input
                 type="number"
                 placeholder="Max Amount"
                 value={filters.amountRange.max}
                 onChange={(e) => handleFilterChange('amountRange', { ...filters.amountRange, max: e.target.value })}
-                className="w-full bg-[#0F172A] border border-gray-600/50 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors duration-200"
+                className="w-full bg-[#0F172A] border border-gray-600/50 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors duration-200"
               />
             </div>
           </div>
 
           {/* Model Type */}
           <div>
-            <label className="block text-gray-300 text-sm font-medium mb-2">Model Type</label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">Model Type</label>
             <select
               value={filters.modelType}
               onChange={(e) => handleFilterChange('modelType', e.target.value)}
-              className="w-full bg-[#0F172A] border border-gray-600/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50 transition-colors duration-200"
+              className="w-full bg-[#0F172A] border border-gray-600/50 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500/50 transition-colors duration-200"
             >
               <option value="All">All Models</option>
               <option value="Classical">Classical Model</option>
@@ -287,8 +287,8 @@ const ReportGeneration = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
             </div>
-            <h3 className="text-gray-400 text-sm font-medium mb-1 uppercase tracking-wider">Total Transactions</h3>
-            <p className="text-white text-3xl font-bold">{displayReportData.summary.totalTransactions.toLocaleString()}</p>
+            <h3 className="text-gray-500 text-sm font-medium mb-1 uppercase tracking-wider">Total Transactions</h3>
+            <p className="text-gray-900 text-3xl font-bold">{displayReportData.summary.totalTransactions.toLocaleString()}</p>
           </Card>
 
           <Card background="bg-[#1E293B]" className="text-center">
@@ -297,8 +297,8 @@ const ReportGeneration = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
             </div>
-            <h3 className="text-gray-400 text-sm font-medium mb-1 uppercase tracking-wider">Fraud Count</h3>
-            <p className="text-white text-3xl font-bold">{displayReportData.summary.fraudCount}</p>
+            <h3 className="text-gray-500 text-sm font-medium mb-1 uppercase tracking-wider">Fraud Count</h3>
+            <p className="text-gray-900 text-3xl font-bold">{displayReportData.summary.fraudCount}</p>
           </Card>
 
           <Card background="bg-[#1E293B]" className="text-center">
@@ -307,8 +307,8 @@ const ReportGeneration = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
-            <h3 className="text-gray-400 text-sm font-medium mb-1 uppercase tracking-wider">Fraud Rate</h3>
-            <p className="text-white text-3xl font-bold">{displayReportData.summary.fraudRate}%</p>
+            <h3 className="text-gray-500 text-sm font-medium mb-1 uppercase tracking-wider">Fraud Rate</h3>
+            <p className="text-gray-900 text-3xl font-bold">{displayReportData.summary.fraudRate}%</p>
           </Card>
 
           <Card background="bg-[#1E293B]" className="text-center">
@@ -317,8 +317,8 @@ const ReportGeneration = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
               </svg>
             </div>
-            <h3 className="text-gray-400 text-sm font-medium mb-1 uppercase tracking-wider">Average Amount</h3>
-            <p className="text-white text-3xl font-bold">₹{displayReportData.summary.averageAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+            <h3 className="text-gray-500 text-sm font-medium mb-1 uppercase tracking-wider">Average Amount</h3>
+            <p className="text-gray-900 text-3xl font-bold">₹{displayReportData.summary.averageAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
           </Card>
         </div>
       )}
@@ -328,7 +328,7 @@ const ReportGeneration = () => {
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 transition-all duration-500 delay-300 ${animationStage >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           {/* Line Chart */}
           <Card background="bg-[#1E293B]">
-            <h3 className="text-xl font-semibold text-white mb-6">Fraud Trends Over Time</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-6">Fraud Trends Over Time</h3>
             <div className="h-64 flex items-end justify-between space-x-4">
               {displayReportData.chartData.fraudOverTime.length > 0 ? (
                 displayReportData.chartData.fraudOverTime.map((data, index) => (
@@ -343,11 +343,11 @@ const ReportGeneration = () => {
                         style={{ height: `${Math.min((data.legit / 2500) * 200, 100)}px` }}
                       ></div>
                     </div>
-                    <span className="text-gray-400 text-sm">{data.date}</span>
+                    <span className="text-gray-500 text-sm">{data.date}</span>
                   </div>
                 ))
               ) : (
-                <div className="flex items-center justify-center w-full h-full text-gray-400">
+                <div className="flex items-center justify-center w-full h-full text-gray-500">
                   No trend data available
                 </div>
               )}
@@ -355,18 +355,18 @@ const ReportGeneration = () => {
             <div className="flex items-center justify-center space-x-6 mt-4">
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                <span className="text-gray-400 text-sm">Fraud</span>
+                <span className="text-gray-500 text-sm">Fraud</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                <span className="text-gray-400 text-sm">Legitimate</span>
+                <span className="text-gray-500 text-sm">Legitimate</span>
               </div>
             </div>
           </Card>
 
           {/* Pie Chart */}
           <Card background="bg-[#1E293B]">
-            <h3 className="text-xl font-semibold text-white mb-6">Transaction Distribution</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-6">Transaction Distribution</h3>
             <div className="flex items-center justify-center mb-6">
               <div className="relative w-40 h-40">
                 <svg className="w-40 h-40 transform -rotate-90" viewBox="0 0 100 100">
@@ -408,12 +408,12 @@ const ReportGeneration = () => {
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-white">
+                    <div className="text-2xl font-bold text-gray-900">
                       {displayReportData.chartData.fraudVsLegit.legit + displayReportData.chartData.fraudVsLegit.fraud > 0
                         ? ((displayReportData.chartData.fraudVsLegit.legit / (displayReportData.chartData.fraudVsLegit.legit + displayReportData.chartData.fraudVsLegit.fraud)) * 100).toFixed(1)
                         : 0}%
                     </div>
-                    <div className="text-xs text-gray-400">Legitimate</div>
+                    <div className="text-xs text-gray-500">Legitimate</div>
                   </div>
                 </div>
               </div>
@@ -422,16 +422,16 @@ const ReportGeneration = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                  <span className="text-gray-300 text-sm">Legitimate</span>
+                  <span className="text-gray-600 text-sm">Legitimate</span>
                 </div>
-                <span className="text-white font-medium">{displayReportData.chartData.fraudVsLegit.legit.toLocaleString()}</span>
+                <span className="text-gray-900 font-medium">{displayReportData.chartData.fraudVsLegit.legit.toLocaleString()}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                  <span className="text-gray-300 text-sm">Fraud</span>
+                  <span className="text-gray-600 text-sm">Fraud</span>
                 </div>
-                <span className="text-white font-medium">{displayReportData.chartData.fraudVsLegit.fraud}</span>
+                <span className="text-gray-900 font-medium">{displayReportData.chartData.fraudVsLegit.fraud}</span>
               </div>
             </div>
           </Card>
@@ -443,16 +443,16 @@ const ReportGeneration = () => {
           background="bg-[#1E293B]" 
           className={`transition-all duration-500 delay-400 ${animationStage >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
         >
-          <h3 className="text-xl font-semibold text-white mb-6">Transaction Details</h3>
+          <h3 className="text-xl font-semibold text-gray-900 mb-6">Transaction Details</h3>
           
-          <div className="overflow-hidden rounded-xl border border-gray-700/50">
+          <div className="overflow-hidden rounded-xl border border-gray-300">
             {/* Table Header */}
-            <div className="grid grid-cols-5 gap-4 p-4 bg-[#0F172A] border-b border-gray-700/50">
-              <div className="text-gray-400 text-sm font-medium uppercase tracking-wider">ID</div>
-              <div className="text-gray-400 text-sm font-medium uppercase tracking-wider">Amount</div>
-              <div className="text-gray-400 text-sm font-medium uppercase tracking-wider">Time</div>
-              <div className="text-gray-400 text-sm font-medium uppercase tracking-wider">Status</div>
-              <div className="text-gray-400 text-sm font-medium uppercase tracking-wider">Fraud Score</div>
+            <div className="grid grid-cols-5 gap-4 p-4 bg-[#0F172A] border-b border-gray-300">
+              <div className="text-gray-500 text-sm font-medium uppercase tracking-wider">ID</div>
+              <div className="text-gray-500 text-sm font-medium uppercase tracking-wider">Amount</div>
+              <div className="text-gray-500 text-sm font-medium uppercase tracking-wider">Time</div>
+              <div className="text-gray-500 text-sm font-medium uppercase tracking-wider">Status</div>
+              <div className="text-gray-500 text-sm font-medium uppercase tracking-wider">Fraud Score</div>
             </div>
 
             {/* Table Body */}
@@ -468,7 +468,7 @@ const ReportGeneration = () => {
                   >
                     <div className="text-blue-400 font-mono text-sm">{transaction.id}</div>
                     <div className="text-cyan-400 font-bold text-sm">{transaction.amount}</div>
-                    <div className="text-gray-300 text-sm">{transaction.time}</div>
+                    <div className="text-gray-600 text-sm">{transaction.time}</div>
                     <div>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                         transaction.status === 'FRAUD' 
@@ -489,12 +489,12 @@ const ReportGeneration = () => {
                           style={{ width: `${transaction.fraudScore}%` }}
                         ></div>
                       </div>
-                      <span className="text-white text-sm font-medium">{transaction.fraudScore}%</span>
+                      <span className="text-gray-900 text-sm font-medium">{transaction.fraudScore}%</span>
                     </div>
                   </div>
                 ))
               ) : (
-                <div className="p-8 text-center text-gray-400">
+                <div className="p-8 text-center text-gray-500">
                   No transactions to display
                 </div>
               )}
@@ -511,8 +511,8 @@ const ReportGeneration = () => {
         >
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-xl font-semibold text-white mb-2">Export Report</h3>
-              <p className="text-gray-400">Download your fraud detection report in multiple formats</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Export Report</h3>
+              <p className="text-gray-500">Download your fraud detection report in multiple formats</p>
             </div>
             
             <div className="flex items-center space-x-4">

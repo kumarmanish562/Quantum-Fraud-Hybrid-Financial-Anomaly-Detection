@@ -50,11 +50,11 @@ const Features = ({ isDark }) => {
   };
 
   return (
-    <section id="features" className={`py-20 px-6 ${isDark ? 'bg-gray-900/50' : 'bg-gray-50'}`}>
+    <section id="features" className={`py-20 px-6 ${isDark ? 'bg-gray-50/50' : 'bg-gray-50'}`}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Powerful Features</h2>
-          <p className={`text-xl max-w-3xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          <h2 className={`text-4xl md:text-5xl font-bold mb-4 ${isDark ? 'text-gray-900' : 'text-gray-900'}`}>Powerful Features</h2>
+          <p className={`text-xl max-w-3xl mx-auto ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
             Advanced quantum-enhanced fraud detection capabilities designed for modern financial platforms
           </p>
         </div>
@@ -65,15 +65,15 @@ const Features = ({ isDark }) => {
               key={index}
               className={`backdrop-blur-sm border rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition-all duration-300 ${
                 isDark 
-                  ? 'bg-gray-800/50 border-gray-700 hover:border-blue-500/50' 
+                  ? 'bg-gray-100 border-gray-300 hover:border-blue-500/50' 
                   : 'bg-white border-gray-200 hover:border-blue-400 shadow-md'
               }`}
             >
               <div className={`w-16 h-16 bg-gradient-to-br ${colorClasses[feature.color]} rounded-xl flex items-center justify-center mb-6 text-4xl`}>
                 {feature.icon}
               </div>
-              <h3 className={`text-2xl font-semibold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>{feature.title}</h3>
-              <p className={`leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{feature.description}</p>
+              <h3 className={`text-2xl font-semibold mb-3 ${isDark ? 'text-gray-900' : 'text-gray-900'}`}>{feature.title}</h3>
+              <p className={`leading-relaxed ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>{feature.description}</p>
             </div>
           ))}
         </div>

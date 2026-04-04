@@ -1,11 +1,20 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import { TopNavbar } from './ui';
 
 const Layout = ({ children, activeMenu, onMenuClick }) => {
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved ? saved === 'dark' : true;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
+
   return (
-    <div className="min-h-screen bg-[#0B0F1A]">
-      <Sidebar onMenuClick={onMenuClick} activeMenu={activeMenu} />
+    <div className={`min-h-screen ${isDark ? 'bg-gray-50' : 'bg-gray-50'}`}>
+      <Sidebar onMenuClick={onMenuClick} activeMenu={activeMenu} isDark={isDark} setIsDark={setIsDark} />
       
       {/* Main Content Area */}
       <div className="ml-64">
@@ -16,6 +25,7 @@ const Layout = ({ children, activeMenu, onMenuClick }) => {
           userName="Admin User"
           userRole="Security Analyst"
           onMenuClick={onMenuClick}
+          isDark={isDark}
         />
         
         {/* Main Content */}

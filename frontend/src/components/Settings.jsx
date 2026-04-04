@@ -107,7 +107,7 @@ const Settings = () => {
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-white font-medium">Loading settings...</p>
+          <p className="text-gray-900 font-medium">Loading settings...</p>
         </div>
       </div>
     );
@@ -137,17 +137,17 @@ const Settings = () => {
 
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-white mb-2">System Settings</h1>
-        <p className="text-gray-400">Configure your fraud detection system parameters and integrations</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">System Settings</h1>
+        <p className="text-gray-500">Configure your fraud detection system parameters and integrations</p>
       </div>
 
       {/* System Status */}
       {modelStatus && (
-        <div className="bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6">
+        <div className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-6">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-white font-medium mb-1">System Status</h3>
-              <p className="text-gray-400 text-sm">Real-time system health monitoring</p>
+              <h3 className="text-gray-900 font-medium mb-1">System Status</h3>
+              <p className="text-gray-500 text-sm">Real-time system health monitoring</p>
             </div>
             <div className="flex items-center space-x-4">
               {modelStatus.models && modelStatus.models.hybrid && modelStatus.models.hybrid.loaded && (
@@ -166,14 +166,14 @@ const Settings = () => {
       )}
 
       {/* Quantum Model Settings */}
-      <div className="bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8">
+      <div className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-8">
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h2 className="text-xl font-semibold text-white mb-2">Quantum Model</h2>
-            <p className="text-gray-400 text-sm">Enable quantum-enhanced fraud detection algorithms</p>
+            <h2 className="text-xl font-semibold text-gray-900 mb-2">Quantum Model</h2>
+            <p className="text-gray-500 text-sm">Enable quantum-enhanced fraud detection algorithms</p>
           </div>
           <div className="flex items-center space-x-4">
-            <span className={`text-sm font-medium ${settings.quantumModel ? 'text-green-400' : 'text-gray-400'}`}>
+            <span className={`text-sm font-medium ${settings.quantumModel ? 'text-green-400' : 'text-gray-500'}`}>
               {settings.quantumModel ? 'Enabled' : 'Disabled'}
             </span>
             <button
@@ -193,20 +193,20 @@ const Settings = () => {
       </div>
 
       {/* Confidence Threshold Settings */}
-      <div className="bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8">
+      <div className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-8">
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h2 className="text-xl font-semibold text-white mb-2">Detection Threshold</h2>
-            <p className="text-gray-400 text-sm">Set the confidence level for fraud detection</p>
+            <h2 className="text-xl font-semibold text-gray-900 mb-2">Detection Threshold</h2>
+            <p className="text-gray-500 text-sm">Set the confidence level for fraud detection</p>
           </div>
         </div>
         
         <div>
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-white font-medium">Confidence Level</h3>
-            <span className="text-2xl font-bold text-white">{settings.confidenceThreshold}%</span>
+            <h3 className="text-gray-900 font-medium">Confidence Level</h3>
+            <span className="text-2xl font-bold text-gray-900">{settings.confidenceThreshold}%</span>
           </div>
-          <p className="text-gray-400 text-sm mb-6">
+          <p className="text-gray-500 text-sm mb-6">
             Transactions with fraud probability above this threshold will be flagged
           </p>
           
@@ -237,19 +237,19 @@ const Settings = () => {
       </div>
 
       {/* System Preferences */}
-      <div className="bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8">
+      <div className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-8">
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h2 className="text-xl font-semibold text-white mb-2">System Preferences</h2>
-            <p className="text-gray-400 text-sm">Configure monitoring and notification settings</p>
+            <h2 className="text-xl font-semibold text-gray-900 mb-2">System Preferences</h2>
+            <p className="text-gray-500 text-sm">Configure monitoring and notification settings</p>
           </div>
         </div>
 
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-white font-medium">Auto-Block Suspicious Transactions</h3>
-              <p className="text-gray-400 text-sm">Automatically block high-risk transactions</p>
+              <h3 className="text-gray-900 font-medium">Auto-Block Suspicious Transactions</h3>
+              <p className="text-gray-500 text-sm">Automatically block high-risk transactions</p>
             </div>
             <button
               onClick={() => handleSettingChange('autoBlock', !settings.autoBlock)}
@@ -267,8 +267,8 @@ const Settings = () => {
 
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-white font-medium">Real-Time Monitoring</h3>
-              <p className="text-gray-400 text-sm">Enable continuous transaction monitoring</p>
+              <h3 className="text-gray-900 font-medium">Real-Time Monitoring</h3>
+              <p className="text-gray-500 text-sm">Enable continuous transaction monitoring</p>
             </div>
             <button
               onClick={() => handleSettingChange('realTimeMonitoring', !settings.realTimeMonitoring)}
@@ -286,8 +286,8 @@ const Settings = () => {
 
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-white font-medium">Email Notifications</h3>
-              <p className="text-gray-400 text-sm">Receive fraud alerts via email</p>
+              <h3 className="text-gray-900 font-medium">Email Notifications</h3>
+              <p className="text-gray-500 text-sm">Receive fraud alerts via email</p>
             </div>
             <button
               onClick={() => handleSettingChange('emailNotifications', !settings.emailNotifications)}
@@ -305,8 +305,8 @@ const Settings = () => {
 
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-white font-medium">SMS Alerts</h3>
-              <p className="text-gray-400 text-sm">Receive critical alerts via SMS</p>
+              <h3 className="text-gray-900 font-medium">SMS Alerts</h3>
+              <p className="text-gray-500 text-sm">Receive critical alerts via SMS</p>
             </div>
             <button
               onClick={() => handleSettingChange('smsAlerts', !settings.smsAlerts)}
@@ -340,7 +340,7 @@ const Settings = () => {
           className={`px-8 py-3 rounded-xl font-semibold transition-all duration-200 ${
             hasChanges && !isSaving
               ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white hover:from-blue-700 hover:to-cyan-600 shadow-lg hover:shadow-blue-500/25'
-              : 'bg-gray-700 text-gray-400 cursor-not-allowed'
+              : 'bg-gray-700 text-gray-500 cursor-not-allowed'
           }`}
         >
           {isSaving ? (

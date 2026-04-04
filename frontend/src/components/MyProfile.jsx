@@ -158,7 +158,7 @@ const MyProfile = () => {
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-white font-medium">Loading profile...</p>
+          <p className="text-gray-900 font-medium">Loading profile...</p>
         </div>
       </div>
     );
@@ -181,8 +181,8 @@ const MyProfile = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white mb-2">My Profile</h1>
-          <p className="text-gray-400">Manage your personal information and preferences</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">My Profile</h1>
+          <p className="text-gray-500">Manage your personal information and preferences</p>
         </div>
         <button
           onClick={() => setIsEditing(!isEditing)}
@@ -196,24 +196,24 @@ const MyProfile = () => {
         {/* Profile Picture & Basic Info */}
         <Card className="text-center">
           <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mx-auto mb-6">
-            <span className="text-white text-4xl font-bold">
+            <span className="text-gray-900 text-4xl font-bold">
               {profileData.firstName.charAt(0)}{profileData.lastName.charAt(0)}
             </span>
           </div>
-          <h2 className="text-2xl font-bold text-white mb-2">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
             {profileData.firstName} {profileData.lastName}
           </h2>
           <p className="text-blue-400 font-medium mb-1">{profileData.role}</p>
-          <p className="text-gray-400 text-sm mb-6">{profileData.department}</p>
+          <p className="text-gray-500 text-sm mb-6">{profileData.department}</p>
           
           <div className="space-y-3 text-sm">
             <div className="flex items-center justify-between">
-              <span className="text-gray-400">Member since</span>
-              <span className="text-white">{new Date(profileData.joinDate).toLocaleDateString()}</span>
+              <span className="text-gray-500">Member since</span>
+              <span className="text-gray-900">{new Date(profileData.joinDate).toLocaleDateString()}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-gray-400">Last login</span>
-              <span className="text-white">{profileData.lastLogin}</span>
+              <span className="text-gray-500">Last login</span>
+              <span className="text-gray-900">{profileData.lastLogin}</span>
             </div>
           </div>
         </Card>
@@ -221,7 +221,7 @@ const MyProfile = () => {
         {/* Personal Information */}
         <Card className="lg:col-span-2">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-semibold text-white">Personal Information</h3>
+            <h3 className="text-xl font-semibold text-gray-900">Personal Information</h3>
             {isEditing && (
               <button
                 onClick={handleSave}
@@ -234,92 +234,92 @@ const MyProfile = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-gray-300 text-sm font-medium mb-2">First Name</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2">First Name</label>
               {isEditing ? (
                 <input
                   type="text"
                   value={profileData.firstName}
                   onChange={(e) => handleInputChange('firstName', e.target.value)}
-                  className="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50"
+                  className="w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500/50"
                 />
               ) : (
-                <p className="text-white bg-gray-800/30 px-4 py-3 rounded-xl">{profileData.firstName}</p>
+                <p className="text-gray-900 bg-white/30 px-4 py-3 rounded-xl">{profileData.firstName}</p>
               )}
             </div>
 
             <div>
-              <label className="block text-gray-300 text-sm font-medium mb-2">Last Name</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2">Last Name</label>
               {isEditing ? (
                 <input
                   type="text"
                   value={profileData.lastName}
                   onChange={(e) => handleInputChange('lastName', e.target.value)}
-                  className="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50"
+                  className="w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500/50"
                 />
               ) : (
-                <p className="text-white bg-gray-800/30 px-4 py-3 rounded-xl">{profileData.lastName}</p>
+                <p className="text-gray-900 bg-white/30 px-4 py-3 rounded-xl">{profileData.lastName}</p>
               )}
             </div>
 
             <div>
-              <label className="block text-gray-300 text-sm font-medium mb-2">Email Address</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2">Email Address</label>
               {isEditing ? (
                 <input
                   type="email"
                   value={profileData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
-                  className="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50"
+                  className="w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500/50"
                 />
               ) : (
-                <p className="text-white bg-gray-800/30 px-4 py-3 rounded-xl">{profileData.email}</p>
+                <p className="text-gray-900 bg-white/30 px-4 py-3 rounded-xl">{profileData.email}</p>
               )}
             </div>
 
             <div>
-              <label className="block text-gray-300 text-sm font-medium mb-2">Phone Number</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2">Phone Number</label>
               {isEditing ? (
                 <input
                   type="tel"
                   value={profileData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
-                  className="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50"
+                  className="w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500/50"
                 />
               ) : (
-                <p className="text-white bg-gray-800/30 px-4 py-3 rounded-xl">{profileData.phone}</p>
+                <p className="text-gray-900 bg-white/30 px-4 py-3 rounded-xl">{profileData.phone}</p>
               )}
             </div>
 
             <div>
-              <label className="block text-gray-300 text-sm font-medium mb-2">Role</label>
-              <p className="text-white bg-gray-800/30 px-4 py-3 rounded-xl">{profileData.role}</p>
+              <label className="block text-gray-600 text-sm font-medium mb-2">Role</label>
+              <p className="text-gray-900 bg-white/30 px-4 py-3 rounded-xl">{profileData.role}</p>
             </div>
 
             <div>
-              <label className="block text-gray-300 text-sm font-medium mb-2">Department</label>
-              <p className="text-white bg-gray-800/30 px-4 py-3 rounded-xl">{profileData.department}</p>
+              <label className="block text-gray-600 text-sm font-medium mb-2">Department</label>
+              <p className="text-gray-900 bg-white/30 px-4 py-3 rounded-xl">{profileData.department}</p>
             </div>
 
             <div>
-              <label className="block text-gray-300 text-sm font-medium mb-2">Location</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2">Location</label>
               {isEditing ? (
                 <input
                   type="text"
                   value={profileData.location}
                   onChange={(e) => handleInputChange('location', e.target.value)}
-                  className="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50"
+                  className="w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500/50"
                 />
               ) : (
-                <p className="text-white bg-gray-800/30 px-4 py-3 rounded-xl">{profileData.location}</p>
+                <p className="text-gray-900 bg-white/30 px-4 py-3 rounded-xl">{profileData.location}</p>
               )}
             </div>
 
             <div>
-              <label className="block text-gray-300 text-sm font-medium mb-2">Timezone</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2">Timezone</label>
               {isEditing ? (
                 <select
                   value={profileData.timezone}
                   onChange={(e) => handleInputChange('timezone', e.target.value)}
-                  className="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50"
+                  className="w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500/50"
                 >
                   <option value="IST (UTC+5:30)">IST (UTC+5:30)</option>
                   <option value="EST (UTC-5)">EST (UTC-5)</option>
@@ -328,7 +328,7 @@ const MyProfile = () => {
                   <option value="CET (UTC+1)">CET (UTC+1)</option>
                 </select>
               ) : (
-                <p className="text-white bg-gray-800/30 px-4 py-3 rounded-xl">{profileData.timezone}</p>
+                <p className="text-gray-900 bg-white/30 px-4 py-3 rounded-xl">{profileData.timezone}</p>
               )}
             </div>
           </div>
@@ -337,31 +337,31 @@ const MyProfile = () => {
 
       {/* Activity Summary */}
       <Card>
-        <h3 className="text-xl font-semibold text-white mb-6">Activity Summary</h3>
+        <h3 className="text-xl font-semibold text-gray-900 mb-6">Activity Summary</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="text-center">
             <div className="text-3xl font-bold text-blue-400 mb-2">
               {activityStats.reportsGenerated.toLocaleString()}
             </div>
-            <div className="text-gray-400 text-sm">Reports Generated</div>
+            <div className="text-gray-500 text-sm">Reports Generated</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-green-400 mb-2">
               {activityStats.transactionsReviewed.toLocaleString()}
             </div>
-            <div className="text-gray-400 text-sm">Transactions Reviewed</div>
+            <div className="text-gray-500 text-sm">Transactions Reviewed</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-yellow-400 mb-2">
               {activityStats.alertsHandled.toLocaleString()}
             </div>
-            <div className="text-gray-400 text-sm">Alerts Handled</div>
+            <div className="text-gray-500 text-sm">Alerts Handled</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-400 mb-2">
               {activityStats.daysActive.toLocaleString()}
             </div>
-            <div className="text-gray-400 text-sm">Days Active</div>
+            <div className="text-gray-500 text-sm">Days Active</div>
           </div>
         </div>
       </Card>

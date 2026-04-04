@@ -128,7 +128,7 @@ export const AIStatusBadge = ({
         return {
           bgColor: 'bg-gradient-to-r from-gray-500/20 to-gray-600/20',
           borderColor: 'border-gray-500/30',
-          textColor: 'text-gray-400',
+          textColor: 'text-gray-500',
           dotColor: 'bg-gray-400',
           label: 'Unknown Status'
         };

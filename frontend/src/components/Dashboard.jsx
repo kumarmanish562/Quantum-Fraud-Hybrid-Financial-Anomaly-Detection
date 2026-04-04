@@ -89,8 +89,8 @@ const Dashboard = () => {
     return (
       <div className="flex items-center justify-center h-screen">
         <div className="text-center">
-          <div className="text-white text-xl mb-2">Loading dashboard...</div>
-          <div className="text-gray-400 text-sm">Fetching real-time data</div>
+          <div className="text-gray-900 text-xl mb-2">Loading dashboard...</div>
+          <div className="text-gray-500 text-sm">Fetching real-time data</div>
         </div>
       </div>
     );
@@ -280,7 +280,7 @@ const Dashboard = () => {
             nodeCount={2048} 
           />
         </div>
-        <div className="text-sm text-gray-400">
+        <div className="text-sm text-gray-500">
           Last updated: {dashboardMetrics?.last_updated ? new Date(dashboardMetrics.last_updated).toLocaleTimeString() : 'N/A'}
         </div>
       </div>
@@ -303,11 +303,11 @@ const Dashboard = () => {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Fraud Trends Chart */}
-        <div className="lg:col-span-2 bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6">
+        <div className="lg:col-span-2 bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-6">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-white text-lg font-semibold">Fraud Trends</h3>
-              <p className="text-gray-400 text-sm">Real-time surveillance overview</p>
+              <h3 className="text-gray-900 text-lg font-semibold">Fraud Trends</h3>
+              <p className="text-gray-500 text-sm">Real-time surveillance overview</p>
             </div>
             <div className="flex items-center space-x-4">
               <button 
@@ -315,7 +315,7 @@ const Dashboard = () => {
                 className={`px-3 py-1 rounded-lg text-sm font-medium transition-all duration-200 ${
                   chartPeriod === 'daily' 
                     ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' 
-                    : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
                 }`}
               >
                 Daily
@@ -325,7 +325,7 @@ const Dashboard = () => {
                 className={`px-3 py-1 rounded-lg text-sm font-medium transition-all duration-200 ${
                   chartPeriod === 'weekly' 
                     ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' 
-                    : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
                 }`}
               >
                 Weekly
@@ -334,7 +334,7 @@ const Dashboard = () => {
           </div>
           
           {/* Simulated Chart */}
-          <div className="relative h-64 bg-gray-900/30 rounded-xl p-4">
+          <div className="relative h-64 bg-gray-100 rounded-xl p-4">
             {chartData.length > 0 && chartData.some(d => d.total_transactions > 0) ? (
               <>
                 <div className="absolute inset-0 flex items-end justify-between px-4 pb-4">
@@ -354,7 +354,7 @@ const Dashboard = () => {
                           style={{ height: `${height}px` }}
                           title={`${dataPoint.fraud_count} frauds, ${dataPoint.fraud_rate}% rate`}
                         ></div>
-                        <span className="text-gray-400 text-xs">{label}</span>
+                        <span className="text-gray-500 text-xs">{label}</span>
                       </div>
                     );
                   })}
@@ -381,7 +381,7 @@ const Dashboard = () => {
                 </svg>
               </>
             ) : (
-              <div className="flex flex-col items-center justify-center h-full text-gray-400">
+              <div className="flex flex-col items-center justify-center h-full text-gray-500">
                 <svg className="w-16 h-16 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
@@ -393,8 +393,8 @@ const Dashboard = () => {
         </div>
 
         {/* System Health Pie Chart */}
-        <div className="bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6">
-          <h3 className="text-white text-lg font-semibold mb-6 uppercase tracking-wider">System Health</h3>
+        <div className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-6">
+          <h3 className="text-gray-900 text-lg font-semibold mb-6 uppercase tracking-wider">System Health</h3>
           
           {/* Simulated Pie Chart */}
           <div className="flex items-center justify-center mb-6">
@@ -429,10 +429,10 @@ const Dashboard = () => {
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">
+                  <div className="text-2xl font-bold text-gray-900">
                     {dashboardMetrics ? Math.round((dashboardMetrics.total_transactions_today - dashboardMetrics.fraud_detected_today) / dashboardMetrics.total_transactions_today * 100) : 97}%
                   </div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wider">Trust Score</div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wider">Trust Score</div>
                 </div>
               </div>
             </div>
@@ -443,18 +443,18 @@ const Dashboard = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                <span className="text-gray-300 text-sm">Legit</span>
+                <span className="text-gray-600 text-sm">Legit</span>
               </div>
-              <span className="text-white font-medium">
+              <span className="text-gray-900 font-medium">
                 {dashboardMetrics ? (dashboardMetrics.total_transactions_today - dashboardMetrics.fraud_detected_today).toLocaleString() : '0'}
               </span>
             </div>
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                <span className="text-gray-300 text-sm">Fraud</span>
+                <span className="text-gray-600 text-sm">Fraud</span>
               </div>
-              <span className="text-white font-medium">
+              <span className="text-gray-900 font-medium">
                 {dashboardMetrics?.fraud_detected_today?.toLocaleString() || '0'}
               </span>
             </div>
@@ -463,34 +463,34 @@ const Dashboard = () => {
       </div>
 
       {/* Quantum Threat Intelligence */}
-      <div className="bg-[#111827]/60 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6">
+      <div className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-6">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-white text-lg font-semibold">Quantum Threat Intelligence</h3>
+          <h3 className="text-gray-900 text-lg font-semibold">Quantum Threat Intelligence</h3>
           <button className="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors">
             View All Logs
           </button>
         </div>
 
         {/* Table Header */}
-        <div className="grid grid-cols-6 gap-4 mb-4 pb-3 border-b border-gray-800/50">
-          <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">Transaction ID</div>
-          <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">Entity Name</div>
-          <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">Amount</div>
-          <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">Risk Level</div>
-          <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">Timestamp</div>
-          <div className="text-gray-400 text-xs font-medium uppercase tracking-wider">Actions</div>
+        <div className="grid grid-cols-6 gap-4 mb-4 pb-3 border-b border-gray-200">
+          <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">Transaction ID</div>
+          <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">Entity Name</div>
+          <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">Amount</div>
+          <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">Risk Level</div>
+          <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">Timestamp</div>
+          <div className="text-gray-500 text-xs font-medium uppercase tracking-wider">Actions</div>
         </div>
 
         {/* Alert Rows */}
         <div className="space-y-3">
           {formattedAlerts.length > 0 ? (
             formattedAlerts.map((alert, index) => (
-              <div key={alert.id || index} className="grid grid-cols-6 gap-4 items-center p-3 bg-gray-800/20 rounded-xl hover:bg-gray-800/40 transition-all duration-200">
+              <div key={alert.id || index} className="grid grid-cols-6 gap-4 items-center p-3 bg-gray-50 rounded-xl hover:bg-white/40 transition-all duration-200">
                 <div className="flex items-center space-x-2">
                   <span className="text-lg">{alert.icon}</span>
-                  <span className="text-gray-300 text-sm font-mono">{alert.id}</span>
+                  <span className="text-gray-600 text-sm font-mono">{alert.id}</span>
                 </div>
-                <div className="text-white text-sm font-medium truncate">{alert.entity}</div>
+                <div className="text-gray-900 text-sm font-medium truncate">{alert.entity}</div>
                 <div className="text-cyan-400 text-sm font-bold">{alert.amount}</div>
                 <div>
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${
@@ -501,7 +501,7 @@ const Dashboard = () => {
                     {alert.riskLevel}
                   </span>
                 </div>
-                <div className="text-gray-400 text-sm">{alert.timestamp}</div>
+                <div className="text-gray-500 text-sm">{alert.timestamp}</div>
                 <div className="flex items-center space-x-2">
                   <button 
                     className="text-blue-400 hover:text-blue-300 text-xs"
@@ -525,7 +525,7 @@ const Dashboard = () => {
             ))
           ) : (
             <div className="text-center py-12">
-              <div className="text-gray-400 text-lg mb-2">No fraud alerts detected</div>
+              <div className="text-gray-500 text-lg mb-2">No fraud alerts detected</div>
               <div className="text-gray-500 text-sm">
                 {hasData ? 'All transactions are secure' : 'Start processing transactions to see fraud detection in action'}
               </div>
